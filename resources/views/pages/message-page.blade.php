@@ -56,7 +56,7 @@
 
     <br><br><br><br><br>
 
-    <h2>Decisions</h2>
+    <h2>{{ $title }}</h2>
     <p>Please fill in the form below following every executive level decision:</p>
 
     <br> <br>
@@ -66,7 +66,7 @@
             <div>
                 <label for="formGroupExampleInput">Meeting Date:</label>
                 <br>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Insert date (dd/mm/yy)" value="{{ $data->meeting_date }}">
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Insert date (dd/mm/yy)" value="{{ ($data!=null)?$data->meeting_date:'' }}">
                 <br><br>
 
             </div>
@@ -74,55 +74,55 @@
             <div class="form-group">
                 <label for="formGroupExampleInput2">Present:</label>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" {{ in_array('Mykhailo Rogalskiy',$data->present)?"checked":"" }}>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" {{ ($data!=null)?(in_array('Mykhailo Rogalskiy',$data->present)?"checked":""):"" }}>
                     <label class="form-check-label" for="inlineCheckbox1">Mykhailo Rogalskiy</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" {{ in_array('Rob Escott',$data->present)?"checked":"" }}>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" {{ ($data!=null)?(in_array('Rob Escott',$data->present)?"checked":""):"" }}>
                     <label class="form-check-label" for="inlineCheckbox2">Rob Escott</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" {{ in_array('Simon Harris',$data->present)?"checked":"" }}>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" {{ ($data!=null)?(in_array('Simon Harris',$data->present)?"checked":""):"" }}>
                     <label class="form-check-label" for="inlineCheckbox3">Simon Harris</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4" {{ in_array('Colin Hollingsbee',$data->present)?"checked":"" }}>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox4" value="option4" {{ ($data!=null)?(in_array('Colin Hollingsbee',$data->present)?"checked":""):"" }}>
                     <label class="form-check-label" for="inlineCheckbox1">Colin Hollingsbee</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option5" {{ in_array('Anna Maxim',$data->present)?"checked":"" }}>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox5" value="option5" {{ ($data!=null)?(in_array('Anna Maxim',$data->present)?"checked":""):"" }}>
                     <label class="form-check-label" for="inlineCheckbox2">Anna Maxim</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="option6" {{ in_array('Scott Andrews',$data->present)?"checked":"" }}>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox6" value="option6" {{ ($data!=null)?(in_array('Scott Andrews',$data->present)?"checked":""):"" }}>
                     <label class="form-check-label" for="inlineCheckbox3">Scott Andrews</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="option7" {{ in_array('Stephen Weeks',$data->present)?"checked":"" }}>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox7" value="option7" {{ ($data!=null)?(in_array('Stephen Weeks',$data->present)?"checked":""):"" }}>
                     <label class="form-check-label" for="inlineCheckbox2">Stephen Weeks</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox8" value="option8" {{ in_array('Amanda Morgan',$data->present)?"checked":"" }}>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox8" value="option8" {{ ($data!=null)?(in_array('Amanda Morgan',$data->present)?"checked":""):"" }}>
                     <label class="form-check-label" for="inlineCheckbox1">Amanda Morgan</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="option9" {{ in_array('Josh Stedman',$data->present)?"checked":"" }}>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox9" value="option9" {{ ($data!=null)?(in_array('Josh Stedman',$data->present)?"checked":""):"" }}>
                     <label class="form-check-label" for="inlineCheckbox2">Josh Stedman</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox10" value="option10" {{ in_array('Kendra Orandi',$data->present)?"checked":"" }}>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox10" value="option10" {{ ($data!=null)?(in_array('Kendra Orandi',$data->present)?"checked":""):"" }}>
                     <label class="form-check-label" for="inlineCheckbox3">Kendra Orandi</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox11" value="option11" {{ in_array('Max Pugach',$data->present)?"checked":"" }}>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox11" value="option11" {{ ($data!=null)?(in_array('Max Pugach',$data->present)?"checked":""):"" }}>
                     <label class="form-check-label" for="inlineCheckbox1">Max Pugach</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox12" value="option12" {{ in_array('Alex Dubilet',$data->present)?"checked":"" }}>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox12" value="option12" {{ ($data!=null)?(in_array('Alex Dubilet',$data->present)?"checked":""):"" }}>
                     <label class="form-check-label" for="inlineCheckbox2">Alex Dubilet</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox13" value="option13" {{ in_array('Maryna Koreshnykova',$data->present)?"checked":"" }}>
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox13" value="option13" {{ ($data!=null)?(in_array('Maryna Koreshnykova',$data->present)?"checked":""):"" }}>
                     <label class="form-check-label" for="inlineCheckbox3">Maryna Koreshnykova</label>
                 </div>
                 <!-- <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="List other attendees"> -->
@@ -135,7 +135,7 @@
                     <label for="formGroupExampleInput2">Not Present:</label>
                 </div>
                 <!-- <input type="textarea" class="form-control" id="formGroupExampleInput2" placeholder="List not present"> -->
-                <textarea name="" id="" cols="25" rows="2" placeholder="list not present">@foreach($data->not_present as $not_present){{ $not_present }}@endforeach</textarea>
+                <textarea name="" id="" cols="25" rows="2" placeholder="list not present">@if($data != null) @foreach($data->not_present as $not_present){{ $not_present }}@endforeach @endif</textarea>
 
 
             </div>
@@ -148,7 +148,7 @@
                 <label for="formGroupExampleInput">Actions:</label>
                 <br>
                 <!-- <input type="text" class="form-control" id="formGroupExampleInput" placeholder="List actions"> -->
-                <textarea name="" id="" cols="60" rows="10" placeholder="List actions">@foreach($data->actions as $action){{ $action }}&#13;&#10;@endforeach</textarea>
+                <textarea name="" id="" cols="60" rows="10" placeholder="List actions">@if($data !=null) @foreach($data->actions as $action){{ $action }}&#13;&#10;@endforeach @endif</textarea>
             </div>
 
 
@@ -157,7 +157,7 @@
             <div>
                 <label for="formGroupExampleInput2">Key Decisons:</label>
                 <br>
-                <textarea name="" id="" cols="60" rows="10" placeholder="List key decisions">@foreach($data->key_decisions as $key_decision){{ $key_decision }}&#13;&#10;@endforeach</textarea>
+                <textarea name="" id="" cols="60" rows="10" placeholder="List key decisions">@if($data!= null) @foreach($data->key_decisions as $key_decision){{ $key_decision }}&#13;&#10;@endforeach @endif</textarea>
 
 
             </div>
@@ -166,7 +166,7 @@
 
                 <label for="formGroupExampleInput2">Matters arrising:</label>
                 <br>
-                <textarea name="" id="" cols="60" rows="10" placeholder="List matters arising">@foreach($data->notes as $note){{ $note }}&#13;&#10;@endforeach</textarea>
+                <textarea name="" id="" cols="60" rows="10" placeholder="List matters arising">@if($data != null) @foreach($data->notes as $note){{ $note }}&#13;&#10;@endforeach @endif</textarea>
 
 
 
@@ -183,10 +183,12 @@
 
                 <label for="formGroupExampleInput">Links to supporting documents:</label>
                 <br>
+                @if($data != null)
                 @foreach($data->link as $link)
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Insert link" size="40" value="{{ $link }}">
-                <br>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Insert link" size="40" value="{{ $link }}">
+                    <br>
                 @endforeach
+                @endif
 
             </div>
 

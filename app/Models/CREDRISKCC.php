@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class CREDRISKCC extends Model
 {
     use HasFactory;
+    protected $table = "CREDRISKCC";
 }

@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class MARKETCC extends Model
 {
     use HasFactory;
+    protected $table = "MARKETCC";
 }

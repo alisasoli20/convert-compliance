@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class FCCC extends Model
 {
     use HasFactory;
+    protected $table = "FCCC";
 }

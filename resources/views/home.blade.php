@@ -73,11 +73,11 @@
         <div class="col-md-6">
             <div class="media-body">
 
-                <a href="board.html"> <img class="mr-3" src="images/board.jpg" width=150 height=120 alt="Generic placeholder image"></a>
+                <a href="{{ route('page','board') }}"> <img class="mr-3" src="images/board.jpg" width=150 height=120 alt="Generic placeholder image"></a>
 
                 <br>
 
-                <a href="board.html"> Board</a>
+                <a href="{{ route('page','board') }}"> Board</a>
 
                 <h3> HEADLINE:</h3>
 
@@ -89,11 +89,11 @@
         <div class="col-md-6">
             <div class="media-body">
 
-                <a href="operations.html"> <img class="mr-3" src="images/operations.jpg" width=150 height=120 alt="Generic placeholder image"></a>
+                <a href="{{ route('page','operations') }}"> <img class="mr-3" src="images/operations.jpg" width=150 height=120 alt="Generic placeholder image"></a>
 
                 <br>
 
-                <a href="operations.html"> Operations</a>
+                <a href="{{ route('page','operations') }}"> Operations</a>
 
                 <h3>HEADLINE: Overall, operational capability is superior to the market average across the multiple functions.</h3>
 
@@ -115,11 +115,11 @@
         <div class="col-md-6">
             <div class="media-body">
 
-                <a href="financial_crime.html"> <img class="mr-3" src="images/financial_crime.jpg" width=150 height=120 alt="Generic placeholder image"></a>
+                <a href="{{ route('page','financial-crime') }}"> <img class="mr-3" src="images/financial_crime.jpg" width=150 height=120 alt="Generic placeholder image"></a>
 
                 <br>
 
-                <a href="financial_crime.html"> Financial Crime</a>
+                <a href="{{ route('page','financial-crime') }}"> Financial Crime</a>
 
                 <h3>HEADLINE</h3>
 
@@ -131,11 +131,11 @@
         <div class="col-md-6">
             <div class="media-body">
 
-                <a href="fraud.html"> <img class="mr-3" src="images/Fraud.jpg" width=150 height=120 alt="Generic placeholder image"></a>
+                <a href="{{ route('page','fraud') }}"> <img class="mr-3" src="images/Fraud.jpg" width=150 height=120 alt="Generic placeholder image"></a>
 
                 <br>
 
-                <a href="fraud.html"> Fraud</a>
+                <a href="{{ route('page','fraud') }}"> Fraud</a>
 
                 <h3>HEADLINE</h3>
 
@@ -149,11 +149,11 @@
         <div class="col-md-6">
             <div class="media-body">
 
-                <a href="risk_acceptance.html"><img class="mr-3" src="images/risk_acceptance.png" width=150 height=120 alt="Generic placeholder image"></a>
+                <a href="{{ route('page','risk-acceptance') }}"><img class="mr-3" src="images/risk_acceptance.png" width=150 height=120 alt="Generic placeholder image"></a>
 
                 <br>
 
-                <a href="risk_acceptance.html"> Risk Acceptance</a>
+                <a href="{{ route('page','risk-acceptance') }}"> Risk Acceptance</a>
 
                 <h3>HEADLINE: Enterprise Risk needs some enhancement to bring it in line with the market average</h3>
 
@@ -199,11 +199,11 @@
          <div class="col-md-6">
              <div class="media-body">
 
-                 <a href="end_of_month.html"> <img class="mr-3" src="images/end_of_month.png" width=150 height=120 alt="Generic placeholder image"></a>
+                 <a href="{{ route('page','end-of-month') }}"> <img class="mr-3" src="images/end_of_month.png" width=150 height=120 alt="Generic placeholder image"></a>
 
                  <br>
 
-                 <a href="end_of_month.html"> End of Month</a>
+                 <a href="{{ route('page','end-of-month') }}"> End of Month</a>
 
                  <h3>HEADLINE</h3>
 
@@ -215,11 +215,11 @@
         <div class="col-md-6">
             <div class="media-body">
 
-                <a href="onboarding.html"> <img class="mr-3" src="images/onboarding.png" width=150 height=120 alt="Generic placeholder image"></a>
+                <a href="{{ route('page','on-boarding') }}"> <img class="mr-3" src="images/onboarding.png" width=150 height=120 alt="Generic placeholder image"></a>
 
                 <br>
 
-                <a href="onboarding.html"> Onboarding</a>
+                <a href="{{ route('page','on-boarding') }}"> Onboarding</a>
 
                 <h3>HEADLINE</h3>
 
@@ -233,11 +233,11 @@
         <div class="col-md-6">
             <div class="media-body">
 
-                <a href="marketing.html"> <img class="mr-3" src="images/marketing.jpg" width=150 height=120 alt="Generic placeholder image"></a>
+                <a href="{{ route('page','marketing') }}"> <img class="mr-3" src="images/marketing.jpg" width=150 height=120 alt="Generic placeholder image"></a>
 
                 <br>
 
-                <a href="marketing.html"> Marketing</a>
+                <a href="{{ route('page','marketing') }}"> Marketing</a>
 
                 <h3>HEADLINE: Marketing does not yet meet the market average as it has not, to date, been a focus area.</h3>
 
@@ -259,11 +259,11 @@
         <div class="col-md-6">
             <div class="media-body">
 
-                <a href="finance.html"> <img class="mr-3" src="images/finance.jpg" width=150 height=120 alt="Generic placeholder image"></a>
+                <a href="{{ route('page','finance') }}"> <img class="mr-3" src="images/finance.jpg" width=150 height=120 alt="Generic placeholder image"></a>
 
                 <br>
 
-                <a href="finance.html"> Finance</a>
+                <a href="{{ route('page','finance') }}"> Finance</a>
 
                 <h3>HEADLINE: Without a dedicated Finance function, Koto cannot yet meet market average in this area.</h3>
 

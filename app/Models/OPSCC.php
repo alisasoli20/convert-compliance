@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class OPSCC extends Model
 {
     use HasFactory;
+    protected $table = "OPSCC";
 }

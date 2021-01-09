@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',['App\Http\Controllers\FrontController','login']);
+Route::get('/',['App\Http\Controllers\FrontController','login'])->name('/');
 
-Route::get('/home',["App\\Http\\Controllers\\FrontController","home"])->name("home");
+Route::get('/home',["App\\Http\\Controllers\\FrontController","home"])->name("home")->middleware('auth');
 
 Route::group(['prefix'=>'admin'], function (){
     Route::get('/',["App\\Http\\Controllers\\AdminController","dashboard"])->name('admin');
@@ -26,7 +26,8 @@ Route::group(['prefix'=>'admin'], function (){
 
 
 Route::get('/{page}',\App\Http\Controllers\FrontController::class)
-    ->name('page');
+    ->name('page')
+    ->middleware('auth');
 
 
 

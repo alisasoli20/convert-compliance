@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class FINCC extends Model
 {
     use HasFactory;
+    protected $table = "FINCC";
 }

@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class ONBOARDCC extends Model
 {
     use HasFactory;
+    protected $table = "ONBOARDCC";
 }
