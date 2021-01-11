@@ -39,6 +39,22 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.roles') }}" class="nav-link" id="roles">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Roles
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.permissions') }}" class="nav-link" id="permissions">
+                        <i class="nav-icon fas fa-book-open"></i>
+                        <p>
+                            Permissions
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

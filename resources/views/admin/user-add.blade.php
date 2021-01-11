@@ -32,7 +32,7 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-                            <form role="form" method="POST" action="#">
+                            <form role="form" method="POST" action="#" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
@@ -51,14 +51,7 @@
                                         <label for="exampleInputPassword1">Password Confirmation</label>
                                         <input type="password" name="password_confirmation" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">Role</label>
-                                        <select class="form-control" name="role" required>
-                                            <option disabled selected>Select User Role</option>
-                                            <option value="admin">Admin</option>
-                                            <option value="user">User</option>
-                                        </select>
-                                    </div>
+
                                     <div class="form-group">
                                         <label for="exampleInputFile">Profile Picture</label>
                                         <div class="input-group">
@@ -71,7 +64,27 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Role</label>
+                                        <select class="form-control" name="role" required>
+                                            <option disabled selected>Select User Role</option>
+                                            @foreach($roles as $role)
+                                                <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Permissions</label>
+                                        <br>
+                                        @foreach($permissions as $permission)
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" name="permissions[]" type="checkbox" id="inlineCheckbox1" value="{{ $permission->name }}">
+                                            <label class="form-check-label" for="inlineCheckbox1">{{ $permission->name }}</label>
+                                        </div>
+                                        @endforeach
+                                    </div>
                                 </div>
+
                                 <!-- /.card-body -->
 
                                 <div class="card-footer text-center">

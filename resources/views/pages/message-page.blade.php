@@ -9,7 +9,6 @@
         a{
             padding: 0 30px;
             color: white;
-            text-decoration: none;
         }
 
         div.form-group1{
@@ -34,7 +33,7 @@
             color: white;
             background-color:rgb(194, 130, 133);
             font-size: xx-large;
-            margin:100px 0px;
+            margin:80px 0px;
             padding: 50px 100px;
             border-radius: 50px;
         }
@@ -195,6 +194,11 @@
             <br><br><br>
 
             <p id="warning"> Please ensure all details on this form are correct before pressing submit. You will not be able to make changes beyond this point.</p>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="" class="buttons">Discard Message</a>
             <input type="submit" name="" id="submit" value="Submit for review">
 
         </div>

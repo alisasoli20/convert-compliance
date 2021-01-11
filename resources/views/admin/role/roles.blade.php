@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         @if(session()->has('success'))
@@ -9,22 +8,23 @@
                 {{ session('success') }}
             </div>
         @endif
-        @if(session()->has('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
+            @if(session()->has('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
         @endif
+
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Users</h1>
+                        <h1>Roles</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{ route('admin') }}">Home</a></li>
-                            <li class="breadcrumb-item active">Users</li>
+                            <li class="breadcrumb-item active">Roles</li>
                         </ol>
                     </div>
                 </div>
@@ -38,8 +38,8 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Users</h3>
-                                <a href="{{ route('admin.user.add') }}" class="float-right btn btn-primary text-white"><i class="fa fa-plus-square text-white mr-2"></i>Add Users</a>
+                                <h3 class="card-title">Roles</h3>
+                                <a href="{{ route('admin.role.add') }}" class="float-right btn btn-primary text-white"><i class="fa fa-plus-square text-white mr-2"></i>Add Roles</a>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -48,30 +48,27 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
+                                        <th>Guard Name</th>
                                         <th>Created At</th>
                                         <th>Changes</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($users as $user)
-                                    <tr>
-                                        <td>{{ $user->id }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        <td>@foreach($user->roles as $role){{ $role->name }}@endforeach</td>
-                                        <td>{{ $user->created_at->diffForHumans() }}</td>
-                                        <td><form action="{{ route('admin.user.delete',$user->id) }}" method="POST">@csrf<a class="mr-2 ml-2" href="{{ route('admin.user.edit', $user->id) }}"><i class="fa fa-edit text-secondary"></i></a><button class="text-decoration-none border-none"><i class="fa fa-trash text-danger"></i></button></form></td>
-                                    </tr>
+                                    @foreach($roles as $role)
+                                        <tr>
+                                            <td>{{ $role->id }}</td>
+                                            <td>{{ $role->name }}</td>
+                                            <td>{{ $role->guard_name }}</td>
+                                            <td>{{ $role->created_at->diffForHumans() }}</td>
+                                            <td><form action="{{ route('admin.role.delete',$role->id) }}" method="POST">@csrf<a class="mr-2 ml-2" href="{{ route('admin.role.edit', $role->id) }}"><i class="fa fa-edit text-secondary"></i></a><button class="text-decoration-none border-none"><i class="fa fa-trash text-danger"></i></button></form></td>
+                                        </tr>
                                     @endforeach
                                     </tbody>
                                     <tfoot>
                                     <tr>
                                         <th>#</th>
                                         <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Role</th>
+                                        <th>Guard Name</th>
                                         <th>Created At</th>
                                         <th>Changes</th>
                                     </tr>
@@ -99,7 +96,7 @@
     <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <script>
-        $('#users').addClass('active');
+        $('#roles').addClass('active');
     </script>
     <!-- page script -->
     <script>
