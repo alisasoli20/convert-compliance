@@ -23,6 +23,10 @@ class CreateITDEVCCSTable extends Migration
             $table->string("key_decisions","1000");
             $table->string("link","1000");
             $table->string("notes","1000");
+            $table->timestamp('submitted_at')->nullable();
+            $table->timestamp('submit_for_review')->nullable();
+            $table->tinyInteger('discarded')->default(0);
+            $table->text('pdf')->nullable();
             $table->timestamps();
         });
     }

@@ -55,6 +55,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.departments') }}" class="nav-link" id="departments">
+                        <i class="nav-icon fas fa-building"></i>
+                        <p>
+                            Departments
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

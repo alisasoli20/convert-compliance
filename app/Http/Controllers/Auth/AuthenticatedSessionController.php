@@ -31,10 +31,12 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
-        if(Auth::user()->role == 'admin'){
-            return redirect('/admin');
+        foreach (Auth::user()->roles as $role){
+            if($role->name == 'Admin'){
+                return redirect('/admin');
+            }
         }
+
         return redirect(RouteServiceProvider::HOME);
     }
 

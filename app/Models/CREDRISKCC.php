@@ -9,4 +9,5 @@ class CREDRISKCC extends Model
 {
     use HasFactory;
     protected $table = "CREDRISKCC";
+    protected $fillable = ['meeting_date', 'meeting', 'present' , 'not_present' , 'actions', 'key_decisions', 'link' , 'notes', 'submitted_at', 'submit_for_review','discarded','pdf' ];
 }

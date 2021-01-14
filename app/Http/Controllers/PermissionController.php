@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
@@ -38,7 +39,7 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
-        Permission::create(['name' => $request->name]);
+        Permission::create(['name' => Str::slug($request->name)]);
         return redirect(route('admin.permissions'))->with('success','Permission has been created successfully.');
     }
 
