@@ -48,13 +48,13 @@
     @endif
     <div class="row">
         <div class="mt-5 col-md-12 text-center">
-            <h1>Privacy Policy</h1>
-            <a href="{{ route('add.policy') }}" class="float-right btn btn-primary mb-5">Upload New Policy</a>
+            <h1>Process</h1>
+            <a href="{{ route('add.process') }}" class="float-right btn btn-primary mb-5">Upload New Process</a>
             <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name of Policy</th>
+                    <th scope="col">Name of Process</th>
                     <th scope="col">Level</th>
                     <th scope="col">Owner</th>
                     <th scope="col">Approval Date</th>
@@ -62,17 +62,17 @@
                 </tr>
                 </thead>
                 <tbody>
-                @if(isset($approved_policies))
-                @foreach($approved_policies as $approved_policy)
-                    <tr>
-                        <td>{{ $approved_policy->id }}</td>
-                        <td>{{ $approved_policy->policy_name }}</td>
-                        <td>{{ $approved_policy->policy_level }}</td>
-                        <td>{{ $approved_policy->policy_owner }}</td>
-                        <td>{{ $approved_policy->approval_date }}</td>
-                        <td>{{ $approved_policy->review_date }}</td>
-                    </tr>
-                @endforeach
+                @if(isset($approved_processes))
+                    @foreach($approved_processes as $approved_process)
+                        <tr>
+                            <td>{{ $approved_process->id }}</td>
+                            <td>{{ $approved_process->process_name }}</td>
+                            <td>{{ $approved_process->process_level }}</td>
+                            <td>{{ $approved_process->process_owner }}</td>
+                            <td>{{ $approved_process->approval_date }}</td>
+                            <td>{{ $approved_process->review_date }}</td>
+                        </tr>
+                    @endforeach
                 @endif
                 </tbody>
             </table>
@@ -80,20 +80,20 @@
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name of Policy</th>
+                    <th scope="col">Name of Process</th>
                     <th scope="col">Level</th>
                     <th scope="col">Action required by(list date below)</th>
 
                 </tr>
                 </thead>
                 <tbody>
-                @if(isset($pending_policies))
-                    @foreach($pending_policies as $pending_policy)
+                @if(isset($pending_processes))
+                    @foreach($pending_processes as $pending_process)
                         <tr>
-                            <td>{{ $pending_policy->id }}</td>
-                            <td>{{ $pending_policy->policy_name }}</td>
-                            <td>{{ $pending_policy->policy_level }}</td>
-                            <td><a href="{{ route('edit.policy',$pending_policy->id) }}"><i class="fas fa-edit"></i></a></td>
+                            <td>{{ $pending_process->id }}</td>
+                            <td>{{ $pending_process->process_name }}</td>
+                            <td>{{ $pending_process->process_level }}</td>
+                            <td><a href="{{ route('edit.process',$pending_process->id) }}"><i class="fas fa-edit"></i></a></td>
                         </tr>
                     @endforeach
                 @endif

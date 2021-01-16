@@ -19,8 +19,25 @@ Route::get('/',['App\Http\Controllers\FrontController','login'])->name('/');
 // FrontController Routes
 Route::get('/test',['App\Http\Controllers\FrontController','test']);
 Route::get('/pdf-test',['App\Http\Controllers\FrontController','pdf']);
-Route::get('/incident',['App\Http\Controllers\FrontController','incident']);
-Route::get('/privacy-policy',['App\Http\Controllers\FrontController','privacyPolicy']);
+
+
+Route::get('/incident',['App\Http\Controllers\IncidentController','index']);
+Route::get('/edit/incident/{id}',['App\Http\Controllers\IncidentController','edit'])->name('edit.incident');
+Route::post('/edit/incident/{id}',['App\Http\Controllers\IncidentController','update']);
+Route::post('/add/incident',['App\Http\Controllers\IncidentController','store'])->name('add.incident');
+Route::get('download/pdf/{pdf}',['App\Http\Controllers\FrontController','downloadPDF'])->name('download.pdf');
+
+Route::get('/privacy-policy',['App\Http\Controllers\PrivacyPolicyController','index']);
+Route::get('/add/policy',['App\Http\Controllers\PrivacyPolicyController','create'])->name('add.policy');
+Route::get('/edit/policy/{id}',['App\Http\Controllers\PrivacyPolicyController','edit'])->name('edit.policy');
+Route::post('/edit/policy/{id}',['App\Http\Controllers\PrivacyPolicyController','update']);
+Route::post('/add/policy',['App\Http\Controllers\PrivacyPolicyController','store']);
+
+Route::get('/process',['App\Http\Controllers\ProcessController','index']);
+Route::get('/add/process',['App\Http\Controllers\ProcessController','create'])->name('add.process');
+Route::get('/edit/process/{id}',['App\Http\Controllers\ProcessController','edit'])->name('edit.process');
+Route::post('/edit/process/{id}',['App\Http\Controllers\ProcessController','update']);
+Route::post('/add/process',['App\Http\Controllers\ProcessController','store']);
 
 Route::post('/submit/review/{id}',['App\Http\Controllers\FrontController','submitForReview'])->name('submit.for.review');
 Route::post('/submit/message/{id}',['App\Http\Controllers\FrontController','submitMessage'])->name('submit.message');

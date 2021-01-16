@@ -104,14 +104,6 @@
             {{$meeting->link}}
         </td>
     </tr>
-    <tr>
-        <td>
-            Submit For Review
-        </td>
-        <td>
-            {{$meeting->submit_for_review->diffForHumans()}}
-        </td>
-    </tr>
 </table>
 </body>
 </html>

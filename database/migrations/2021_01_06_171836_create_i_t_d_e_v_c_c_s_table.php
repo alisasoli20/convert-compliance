@@ -17,6 +17,7 @@ class CreateITDEVCCSTable extends Migration
             $table->id();
             $table->string("meeting_date","1000");
             $table->string("meeting","1000");
+            $table->string('slug');
             $table->string("present","1000");
             $table->string("not_present","1000");
             $table->string("actions","1000");
@@ -27,6 +28,7 @@ class CreateITDEVCCSTable extends Migration
             $table->timestamp('submit_for_review')->nullable();
             $table->tinyInteger('discarded')->default(0);
             $table->text('pdf')->nullable();
+            $table->bigInteger('user_id');
             $table->timestamps();
         });
     }

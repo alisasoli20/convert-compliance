@@ -74,6 +74,7 @@ class AdminController extends Controller
             $user->password = Hash::make($request->password);
         }
         if($request->profile_picture != null) {
+            @unlink($user->profile_picture);
             $filename = time().'.'.$request->profile_picture->extension();
             $request->profile_picture->move(public_path('images'),$filename);
             $user->profile_picture = $filename;

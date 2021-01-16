@@ -17,12 +17,18 @@ class CreateBOARDCCSTable extends Migration
             $table->id();
             $table->string("meeting_date","1000");
             $table->string("meeting","1000");
+            $table->string('slug');
             $table->string("present","1000");
             $table->string("not_present","1000");
             $table->string("actions","1000");
             $table->string("key_decisions","1000");
             $table->string("link","1000");
             $table->string("notes","1000");
+            $table->timestamp('submitted_at')->nullable();
+            $table->timestamp('submit_for_review')->nullable();
+            $table->tinyInteger('discarded')->default(0);
+            $table->text('pdf')->nullable();
+            $table->bigInteger('user_id');
             $table->timestamps();
         });
     }

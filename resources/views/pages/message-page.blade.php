@@ -63,8 +63,45 @@
             border-radius: 50px;
             text-decoration: none;
         }
+        #customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 80%;
+            border-radius: 5px;
+            margin: 0 auto;
+        }
 
+        #customers td, #customers th {
+            border: 1px solid #ffffff;
+            padding: 8px;
+        }
 
+        #customers tr:nth-child(even){background-color: #6677a5;}
+
+        #customers tr:hover {background-color: #2f6dbf;}
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #68448e;
+            color: white;
+        }
+        .approved_data{
+            margin-top: 200px;
+            align-items: center;
+            text-align: center;
+        }
+        .save-changes-btn{
+            float: right;
+            color: white;
+            background-color:blueviolet;
+            font-size: large;
+            margin-bottom: 30px;
+            margin-right: 50px;
+            border-radius: 50px;
+            text-decoration: none;
+        }
     </style>
 @endsection
 @section('content')
@@ -84,12 +121,14 @@
 
     <h2>{{ $title }}</h2>
     <a href="{{ route('add.message',$title)}}" class="add-message">Add Message</a>
+    <a href="" class="save-changes-btn">Save Changes</a>
     <p>Please fill in the form below following every executive level decision:</p>
 
     <br> <br>
     <form method="POST" action="{{ ($data!=null)?(($data->submit_for_review == null)?route('submit.for.review',$data->id):route('submit.message',$data->id)):"#" }}">
         @csrf
         <div class="form-group1">
+            <input name="slug" value="{{ $title }}" hidden>
             <input name="meeting" value="{{ ($data!=null)?$data->meeting:"" }}" hidden>
             <div>
                 <label for="formGroupExampleInput">Meeting Date:</label>
@@ -234,5 +273,29 @@
 
 
     </form>
-
+    <div class="approved_data">
+        <table id="customers">
+            <tr>
+                <th>ID</th>
+                <th>Meeting Date</th>
+                <th>Meeting</th>
+                <th>Submit For Review On</th>
+                <th>Submitted At</th>
+                <th>Submitted By</th>
+                <th>Status</th>
+            </tr>
+            @foreach($approved_data as $approved)
+            <tr>
+                <td>{{ $approved->id }}</td>
+                <td>{{ $approved->meeting_date }}</td>
+                <td>{{ $approved->meeting }}</td>
+                <td>{{ \Carbon\Carbon::parse($approved->submit_for_review)->diffForHumans() }}</td>
+                <td>{{ \Carbon\Carbon::parse($approved->submitted_at)->diffForHumans() }}</td>
+                <td>{{ $approved->user->name }}</td>
+                <td>{{ "Submitted" }}</td>
+            </tr>
+            @endforeach
+        </table>
+    </div>
+    <br>
 @endsection

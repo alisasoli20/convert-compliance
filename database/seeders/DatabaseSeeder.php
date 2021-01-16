@@ -4,11 +4,13 @@ namespace Database\Seeders;
 
 use App\Models\Department;
 use App\Models\Name;
+use App\Models\news;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use Psy\Util\Str;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,45 +22,128 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        /*$user = new User([
-            'name' => 'admin',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('password'),
-            'created_at' => Carbon::now()
-        ]);
-        if($user->save()){
-            $user->assignRole('Admin');
-        }*/
-//        Name::insert([
-//            ['key' => "MR",
-//            'value' => "Mykhailo Rogalskiy"],
-//            ['key' => "CH",
-//                'value' => "Colin Hollingsbee"],
-//            ['key' => "RE",
-//                'value' => "Rob Escott"],
-//            ['key' => "SH",
-//                'value' => "Simon Harris"],
-//            ['key' => "AM",
-//                'value' => "Anna Maxim"],
-//            ['key' => "SW",
-//                'value' => "Stephen Weeks"],
-//            ['key' => "SA",
-//                'value' => "Scott Andrews"],
-//            ['key' => "AMM",
-//                'value' => "Amanda Morgan"],
-//            ['key' => "JS",
-//                'value' => "Josh Stedman"],
-//            ['key' => "SA",
-//                'value' => "Kendra Orandi"],
-//            ['key' => "MK",
-//                'value' => "Maryna Koreshnykova"],
-//            ['key' => "MZ",
-//                'value' => "Margo Zhyvytsia"],
-//            ['key' => "OG",
-//                'value' => "Oleg Gorokhovskiy"],
-//
-//        ]);
-        Department::insert([
+        /*Role::create([
+            'name' => 'Admin'
+        ]);*/
+        User::insert([
+                [
+                    'name' => 'admin',
+                    'email' => 'admin@admin.com',
+                    'password' => Hash::make('password'),
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'name' => 'Mykhailo Rogalskiy',
+                    'email' => 'mykailo@gmail.com',
+                    'password' => Hash::make('password'),
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'name' => 'Colin Hollingsbee',
+                    'email' => 'coling@gmail.com',
+                    'password' => Hash::make('password'),
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'name' => 'Rob Escott',
+                    'email' => 'robescott@gmail.com',
+                    'password' => Hash::make('password'),
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'name' => 'Simon Harris',
+                    'email' => 'simonharris@gmail.com',
+                    'password' => Hash::make('password'),
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'name' => 'Anna Maxim',
+                    'email' => 'annamaxim@gmail.com',
+                    'password' => Hash::make('password'),
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'name' => 'Stephen Weeks',
+                    'email' => 'stephenweeks@gmail.com',
+                    'password' => Hash::make('password'),
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'name' => 'Scott Andrews',
+                    'email' => 'scottandrews@gmail.com',
+                    'password' => Hash::make('password'),
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'name' => 'Amanda Morgan',
+                    'email' => 'amandamorgan@gmail.com',
+                    'password' => Hash::make('password'),
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'name' => 'Josh Stedman',
+                    'email' => 'joshstedman@gmail.com',
+                    'password' => Hash::make('password'),
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'name' => 'Kendra Orandi',
+                    'email' => 'kendarorandi@gmail.com',
+                    'password' => Hash::make('password'),
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'name' => 'Maryna Koreshnykova',
+                    'email' => 'maryna@gmail.com',
+                    'password' => Hash::make('password'),
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'name' => 'Margo Zhyvytsia',
+                    'email' => 'margo@gmail.com',
+                    'password' => Hash::make('password'),
+                    'created_at' => Carbon::now()
+                ],
+                [
+                    'name' => 'Oleg Gorokhovskiy',
+                    'email' => 'oleg@gmail.com',
+                    'password' => Hash::make('password'),
+                    'created_at' => Carbon::now()
+                ],
+            ]
+        );
+        $user = User::where('email','admin@admin.com')->first();
+        $user->assignRole('Admin');
+        /*Name::insert([
+            ['key' => "MR",
+            'value' => "Mykhailo Rogalskiy"],
+            ['key' => "CH",
+                'value' => "Colin Hollingsbee"],
+            ['key' => "RE",
+                'value' => "Rob Escott"],
+            ['key' => "SH",
+                'value' => "Simon Harris"],
+            ['key' => "AM",
+                'value' => "Anna Maxim"],
+            ['key' => "SW",
+                'value' => "Stephen Weeks"],
+            ['key' => "SA",
+                'value' => "Scott Andrews"],
+            ['key' => "AMM",
+                'value' => "Amanda Morgan"],
+            ['key' => "JS",
+                'value' => "Josh Stedman"],
+            ['key' => "SA",
+                'value' => "Kendra Orandi"],
+            ['key' => "MK",
+                'value' => "Maryna Koreshnykova"],
+            ['key' => "MZ",
+                'value' => "Margo Zhyvytsia"],
+            ['key' => "OG",
+                'value' => "Oleg Gorokhovskiy"],
+
+        ]);*/
+        /*Department::insert([
             [
              'name' => 'Information Technology',
              'slug' => \Illuminate\Support\Str::slug('Information Technology'),
@@ -144,6 +229,60 @@ class DatabaseSeeder extends Seeder
                 'created_at' => Carbon::now()
             ]
             ]
-        );
+        );*/
+        /*news::insert(
+            [
+                [
+                    'title' => 'a',
+                    'link' => 'a',
+                    'date' => 'a'
+                ],
+                [
+                    'title' => 'a',
+                    'link' => 'a',
+                    'date' => 'a'
+                ],
+                [
+                    'title' => 'a',
+                    'link' => 'a',
+                    'date' => 'a'
+                ],
+                [
+                    'title' => 'a',
+                    'link' => 'a',
+                    'date' => 'a'
+                ],
+                [
+                    'title' => 'a',
+                    'link' => 'a',
+                    'date' => 'a'
+                ],
+                [
+                    'title' => 'a',
+                    'link' => 'a',
+                    'date' => 'a'
+                ],
+                [
+                    'title' => 'a',
+                    'link' => 'a',
+                    'date' => 'a'
+                ],
+                [
+                    'title' => 'a',
+                    'link' => 'a',
+                    'date' => 'a'
+                ],
+                [
+                    'title' => 'a',
+                    'link' => 'a',
+                    'date' => 'a'
+                ],
+                [
+                    'title' => 'a',
+                    'link' => 'a',
+                    'date' => 'a'
+                ],
+            ]
+        );*/
     }
 }
