@@ -1,109 +1,83 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
-
-    <title>Privacy Policy</title>
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-                <a class="nav-link" href="{{ route('home') }}">Home </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('page','incident') }}">Incidents</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('page','privacy-policy') }}">Privacy Policy</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('page','process') }}">Process</a>
-            </li>
-        </ul>
-
-    </div>
-</nav>
-<div class="container-fluid">
-    @if(session()->has('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-    @if(session()->has('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
-    <div class="row">
-        <div class="mt-5 col-md-12 text-center">
-            <h1>Privacy Policy</h1>
-            <a href="{{ route('add.policy') }}" class="float-right btn btn-primary mb-5">Upload New Policy</a>
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name of Policy</th>
-                    <th scope="col">Level</th>
-                    <th scope="col">Owner</th>
-                    <th scope="col">Approval Date</th>
-                    <th scope="col">Review Date</th>
-                </tr>
-                </thead>
-                <tbody>
-                @if(isset($approved_policies))
-                @foreach($approved_policies as $approved_policy)
-                    <tr>
-                        <td>{{ $approved_policy->id }}</td>
-                        <td>{{ $approved_policy->policy_name }}</td>
-                        <td>{{ $approved_policy->policy_level }}</td>
-                        <td>{{ $approved_policy->policy_owner }}</td>
-                        <td>{{ $approved_policy->approval_date }}</td>
-                        <td>{{ $approved_policy->review_date }}</td>
-                    </tr>
-                @endforeach
-                @endif
-                </tbody>
-            </table>
-            <table class="table table-bordered">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name of Policy</th>
-                    <th scope="col">Level</th>
-                    <th scope="col">Action required by(list date below)</th>
-
-                </tr>
-                </thead>
-                <tbody>
-                @if(isset($pending_policies))
-                    @foreach($pending_policies as $pending_policy)
+@extends('layouts.master')
+@section('content')
+    <section class="form-section pt-5">
+        <div class="container request-form ">
+            @if(session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if(session()->has('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+                <div class="row pt-4">
+                    <div class="col-md-12">
+                        <a href="{{ route('add.policy') }}" class="float-right btn btn-light mb-5"><i class="fas fa-upload mr-3"></i>Upload New Policy</a>
+                    </div>
+                </div>
+            <div class="row">
+                <div class="mt-5 mb-5 col-md-12 text-center">
+                    <h1>Privacy Policy</h1>
+                    <table class="table table-bordered mb-5" id="policy">
+                        <thead>
                         <tr>
-                            <td>{{ $pending_policy->id }}</td>
-                            <td>{{ $pending_policy->policy_name }}</td>
-                            <td>{{ $pending_policy->policy_level }}</td>
-                            <td><a href="{{ route('edit.policy',$pending_policy->id) }}"><i class="fas fa-edit"></i></a></td>
+                            <th scope="col">#</th>
+                            <th scope="col">Name of Policy</th>
+                            <th scope="col">Level</th>
+                            <th scope="col">Owner</th>
+                            <th scope="col">Approval Date</th>
+                            <th scope="col">Review Date</th>
                         </tr>
-                    @endforeach
-                @endif
-                </tbody>
-            </table>
+                        </thead>
+                        <tbody>
+                        @if(isset($approved_policies))
+                            @foreach($approved_policies as $approved_policy)
+                                <tr>
+                                    <td>{{ $approved_policy->id }}</td>
+                                    <td>{{ $approved_policy->policy_name }}</td>
+                                    <td>{{ $approved_policy->policy_level }}</td>
+                                    <td>{{ $approved_policy->policy_owner }}</td>
+                                    <td>{{ $approved_policy->approval_date }}</td>
+                                    <td>{{ $approved_policy->review_date }}</td>
+                                </tr>
+                            @endforeach
+                        @endif
+                        </tbody>
+                    </table>
+                    <h3>Policy Required Action</h3>
+                    <table class="table table-bordered mt-5" id="action_policy">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name of Policy</th>
+                            <th scope="col">Level</th>
+                            <th scope="col">Action required by(list date below)</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @if(isset($pending_policies))
+                            @foreach($pending_policies as $pending_policy)
+                                <tr>
+                                    <td>{{ $pending_policy->id }}</td>
+                                    <td>{{ $pending_policy->policy_name }}</td>
+                                    <td>{{ $pending_policy->policy_level }}</td>
+                                    <td><a href="{{ route('edit.policy',$pending_policy->id) }}"><i class="fas fa-edit"></i></a></td>
+                                </tr>
+                            @endforeach
+                        @endif
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js" integrity="sha512-UwcC/iaz5ziHX7V6LjSKaXgCuRRqbTp1QHpbOJ4l1nw2/boCfZ2KlFIqBUA/uRVF0onbREnY9do8rM/uT/ilqw==" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-</body>
-</html>
+    </section>
+@endsection
+@section('page-script')
+    <script>
+        $('#action_policy').DataTable()
+        $('#policy').DataTable()
+    </script>
+@endsection

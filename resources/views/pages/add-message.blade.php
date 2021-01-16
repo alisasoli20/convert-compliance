@@ -1,3 +1,4 @@
+{{--
 @extends('layouts.master')
 @section('page-css')
 
@@ -230,3 +231,147 @@
     </form>
 
 @endsection
+--}}
+
+@extends('layouts.master')
+@section('page-css')
+@endsection
+@section('content')
+    <section class="form-section pt-4 pb-4">
+        <div class="container request-form">
+            @if(session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if(session()->has('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+            <div class="row mt-2">
+                <div class="col text-center">
+                    <h1>{{ $model }}</h1>
+                </div>
+            </div>
+            <form method="POST" action="{{ route('save.message',$model) }}">
+                @csrf
+                <div class="row">
+                    <div class="col">
+                        <input type="text" name="slug" class="form-control" id="exampleFormControlInput1" placeholder="" value="{{ $model }}" hidden>
+
+                        <div class="form-group row">
+                            <div class="col">
+                                <label for="exampleFormControlSelect1">Meeting Date</label>
+                                <input type="date" name="meeting_date" class="form-control" id="formGroupExampleInput" placeholder="Insert date (dd/mm/yy)" >
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col">
+                                <label for="formGroupExampleInput">Actions:</label>
+                                <textarea name="actions" id="" rows="5" class="form-control"  placeholder="List actions"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col">
+                                <label for="formGroupExampleInput2">Key Decisons:</label>
+                                <textarea name="key_decisions" id="" class="form-control" rows="5" placeholder="List key decisions"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col">
+                                <label class="col-form-label" for="formGroupExampleInput2">Matters arrising:</label>
+                                <textarea name="notes" class="form-control" id="" rows="5" placeholder="List matters arising"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col">
+                                <label for="formGroupExampleInput">Links to supporting documents:</label>
+                                <textarea name="link" class="form-control" id="formGroupExampleInput" placeholder="Insert link" ></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col">
+                                <label>Presents</label>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" name="present[]" type="checkbox" id="inlineCheckbox1" value="MR">
+                                            <label class="form-check-label mr-3" for="inlineCheckbox1">Mykhailo Rogalskiy</label>
+                                        </div>
+                                        <div class="form-check ">
+                                            <input class="form-check-input" name="present[]" type="checkbox" id="inlineCheckbox6" value="SA" >
+                                            <label class="form-check-label mr-3" for="inlineCheckbox3">Scott Andrews</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" name="present[]" type="checkbox" id="inlineCheckbox7" value="SW" >
+                                            <label class="form-check-label mr-3" for="inlineCheckbox2">Stephen Weeks</label>
+                                        </div>
+                                        <div class="form-check f">
+                                            <input class="form-check-input" name="present[]" type="checkbox" id="inlineCheckbox8" value="AMM" >
+                                            <label class="form-check-label mr-3" for="inlineCheckbox1">Amanda Morgan</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" name="present[]" type="checkbox" id="inlineCheckbox11" value="MP">
+                                            <label class="form-check-label mr-3" for="inlineCheckbox1">Max Pugach</label>
+                                        </div>
+                                        <div class="form-check ">
+                                            <input class="form-check-input" name="present[]" type="checkbox" id="inlineCheckbox12" value="AB" >
+                                            <label class="form-check-label mr-3" for="inlineCheckbox2">Alex Dubilet</label>
+                                        </div>
+                                        <div class="form-check ">
+                                            <input class="form-check-input" name="present[]" type="checkbox" id="inlineCheckbox13" value="MK" >
+                                            <label class="form-check-label mr-3" for="inlineCheckbox3">Maryna Koreshnykova</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9 text-left">
+                                        <div class="form-check">
+                                            <input class="form-check-input" name="present[]" type="checkbox" id="inlineCheckbox2" value="RE" >
+                                            <label class="form-check-label mr-3" for="inlineCheckbox2">Rob Escott</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" name="present[]" type="checkbox" id="inlineCheckbox3" value="SH" >
+                                            <label class="form-check-label mr-3" for="inlineCheckbox3">Simon Harris</label>
+                                        </div>
+                                        <div class="form-check ">
+                                            <input class="form-check-input" name="present[]" type="checkbox" id="inlineCheckbox4" value="CH" >
+                                            <label class="form-check-label mr-3" for="inlineCheckbox1">Colin Hollingsbee</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" name="present[]" type="checkbox" id="inlineCheckbox5" value="AM" >
+                                            <label class="form-check-label mr-3" for="inlineCheckbox2">Anna Maxim</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" name="present[]" type="checkbox" id="inlineCheckbox9" value="JS" >
+                                            <label class="form-check-label mr-3" for="inlineCheckbox2">Josh Stedman</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" name="present[]" type="checkbox" id="inlineCheckbox10" value="SA" >
+                                            <label class="form-check-label mr-3" for="inlineCheckbox3">Kendra Orandi</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col">
+                                <label for="formGroupExampleInput2">Not Present:</label>
+                                <textarea name="not_present" id="" class="form-control" rows="2" placeholder="list not present"></textarea>
+                            </div>
+                        </div>
+                        <!-- <input type="textarea" class="form-control" id="formGroupExampleInput2" placeholder="List not present"> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mb-4">
+                        <button class="btn btn-default text-white custom-buttons" name=""   >Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+@endsection
+
+

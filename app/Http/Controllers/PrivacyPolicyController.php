@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\PolicyMail;
+use App\Models\Department;
 use App\Models\PolicyPrivacy;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,9 +18,11 @@ class PrivacyPolicyController extends Controller
      */
     public function index()
     {
+        $title = "Policies";
+        $departments = Department::all();
         $pending_policies = PolicyPrivacy::where('status',"pending")->get();
         $approved_policies = PolicyPrivacy::where('status',"approved")->get();
-        return view('pages.privacy-policy')->with(['pending_policies' => $pending_policies, 'approved_policies' => $approved_policies]);
+        return view('pages.privacy-policy')->with(['pending_policies' => $pending_policies, 'approved_policies' => $approved_policies , 'title' => $title ,'departments' => $departments]);
     }
 
     /**
@@ -29,9 +32,10 @@ class PrivacyPolicyController extends Controller
      */
     public function create()
     {
+        $title = "Create Policy";
+        $departments = Department::all();
         $users = User::all();
-
-        return view('pages.add-policy')->with(['users' => $users]);
+        return view('pages.add-policy')->with(['users' => $users, 'title' => $title, 'departments' => $departments]);
     }
 
     /**
@@ -78,9 +82,11 @@ class PrivacyPolicyController extends Controller
      */
     public function edit($id)
     {
+        $title = "Edit Policy";
         $policy = PolicyPrivacy::where('id',$id)->first();
         $users = User::all();
-        return view('pages.edit-policy',compact('policy','users'));
+        $departments = Department::all();
+        return view('pages.edit-policy')->with(['policy' => $policy, 'users' => $users, 'title' => $title , 'departments' => $departments]);
     }
 
     /**

@@ -1,0 +1,151 @@
+
+.navbar-brand{
+  width: 8%;
+    margin-left: 10%;
+}
+.navbar-nav > li{
+
+    font-weight: 600;
+  padding-right:20px;
+}
+.active  a{
+    color: #109CD7 !important;
+}
+.sub-menu{
+    border-top:4px solid #109CD7;
+    color: #828282;
+       list-style: none;
+    font-weight: 600;
+    padding-left: 30px;
+    font-size: 16px;
+    padding-right: 16px;
+}
+.sub-menu > li:hover{
+     color: #adadad !important;
+    background-color: #efefef;
+
+}
+.navbar-nav > li > a:hover{
+    color: #adadad !important;
+}
+.dropdown-menu{
+    width: 160% !important;
+    background-color:  #109CD7 ;
+}
+.fa-shopping-cart:hover{
+    color: #109CD7;
+
+}
+.fa-search:hover{
+    color: #109CD7;
+
+}
+.carousel-item > img{
+    height: 100vh;
+}
+.line{
+    border-top:1px solid #e09900;
+    margin-top: 4%;
+
+
+}
+.linetext{
+    color: #e09900!important;
+}
+.sec3t1{
+    font-weight: 400;
+    color: #393e42;
+}
+.sec3t2{
+    font-weight: 600;
+}
+.bg1{
+    background-image: linear-gradient(175deg,rgba(0,0,0,0.96) 12%,#0598d8 100%)!important;
+}
+.sec4text{
+    margin-top: 10%;
+}
+.sec4border{
+   border-bottom:2px solid #e09900;
+    width: 10%;
+}
+.sec5mainborder{
+  border-bottom:2px dashed white;
+}
+.fm3{
+       background-color: #ececec !important;
+   padding: 24px !important;
+}
+.contactusimage{
+    height: 80vh;
+}
+.bg2{
+        background-image: linear-gradient(180deg,#0598d8 0%,rgba(0,0,0,0.96) 100%)!important;
+}
+.fm2{
+    background-color: transparent!important;
+    color: white;
+        border-top: none !important;
+    padding: 24px !important;
+}
+.foot ::placeholder{
+    color: white !important;
+}
+.foot{
+        margin-left: 5%;
+}
+.fm2:focus{
+    outline: none !important;
+}
+.button1{
+    background-color: transparent !important;
+    border: none !important;
+}
+.button1:hover{
+        background-color: hsla(0,0%,100%,.2) !important;
+}
+.footertext{
+    margin-left: 32%;
+}
+.contacthead{
+    margin-left: 21%;
+}
+.mobh2{
+    margin-left: .5rem!important;
+}
+.gettouch{
+    padding-top: 3%;
+}
+@media only screen and (max-width: 600px){
+    .carousel-item > img{
+    height: 40vh;
+}
+    .mobh1{
+              margin-left: 17%;
+    font-size: 27px;
+    }
+    .centericons{
+        text-align: center;
+    }
+    .contactusimage {
+
+        margin-top: 5%;
+    }
+    .footericons{
+        margin-left: 18%;
+    }
+    .footertext {
+    font-size: 16px;
+     margin-left: 4%;
+}
+     .mobh2{
+              margin-left: 19% !important;
+    font-size: 27px;
+    }
+     h1 {
+    font-size: 1.5rem !important;
+}
+ .logo{
+    width: 122%;
+}
+}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ProcessMail;
+use App\Models\Department;
 use App\Models\Process;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,9 +18,11 @@ class ProcessController extends Controller
      */
     public function index()
     {
+        $title = "Processes";
+        $departments = Department::all();
         $pending_processes = Process::where('status',"pending")->get();
         $approved_processes = Process::where('status',"approved")->get();
-        return view('pages.process')->with(['pending_processes' => $pending_processes, 'approved_processes' => $approved_processes]);
+        return view('pages.process')->with(['pending_processes' => $pending_processes, 'approved_processes' => $approved_processes, 'title' => $title, 'departments' => $departments]);
     }
 
     /**
@@ -29,8 +32,10 @@ class ProcessController extends Controller
      */
     public function create()
     {
+        $title = "Create Process";
+        $departments = Department::all();
         $users = User::all();
-        return view('pages.add-process',compact('users'));
+        return view('pages.add-process')->with(['title' => $title, 'departments' => $departments, 'users' => $users]);
     }
 
     /**
@@ -77,9 +82,11 @@ class ProcessController extends Controller
      */
     public function edit($id)
     {
+        $title = "Processes";
+        $departments = Department::all();
         $process = Process::where('id',$id)->first();
         $users = User::all();
-        return view('pages.edit-process',compact('process','users'));
+        return view('pages.edit-process')->with(['title' => $title, 'departments' => $departments, 'users' => $users, 'process' => $process]);
     }
 
     /**

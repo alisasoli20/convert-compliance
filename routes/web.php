@@ -14,11 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/',['App\Http\Controllers\FrontController','login'])->name('/');
+Route::get('/home',["App\\Http\\Controllers\\FrontController","home"])->name("home")->middleware('auth');
 
 
 // FrontController Routes
-Route::get('/test',['App\Http\Controllers\FrontController','test']);
-Route::get('/pdf-test',['App\Http\Controllers\FrontController','pdf']);
+//Route::get('/test',['App\Http\Controllers\FrontController','test']);
+//Route::get('/pdf-test',['App\Http\Controllers\FrontController','pdf']);
 
 
 Route::get('/incident',['App\Http\Controllers\IncidentController','index']);
@@ -44,8 +45,8 @@ Route::post('/submit/message/{id}',['App\Http\Controllers\FrontController','subm
 Route::get('/discard/message/{id}/{model}',['App\Http\Controllers\FrontController','discardMessage'])->name('discard.message');
 Route::get('/add/message/{title}',['App\Http\Controllers\FrontController','addMessage'])->name('add.message');
 Route::post('/save/message/{model}',['App\Http\Controllers\FrontController','saveMessage'])->name('save.message');
+Route::post('/save/changes/{title}',['App\Http\Controllers\FrontController','saveChanges'])->name('save.changes');
 
-Route::get('/home',["App\\Http\\Controllers\\FrontController","home"])->name("home")->middleware('auth');
 
 Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'role:Admin']], function (){
     Route::get('/',["App\\Http\\Controllers\\AdminController","dashboard"])->name('admin');
@@ -83,12 +84,16 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'role:Admin']], functi
 });
 
 
+
+Route::get('contact-us',['App\Http\Controllers\FrontController','contactUs'])->name('contact-us');
+Route::get('idea',['App\Http\Controllers\FrontController','idea'])->name('idea');
+Route::get('how-it-works',['App\Http\Controllers\FrontController','howItWorks'])->name('how-it-works');
+
 Route::get('/{page}',\App\Http\Controllers\FrontController::class)
     ->name('page')
     ->middleware(['auth']);
 
 
 
-Route::get('contact-us',['App\Http\Controllers\FrontController','contactUs'])->name('contact-us');
 
 require __DIR__.'/auth.php';

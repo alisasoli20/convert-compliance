@@ -2,15 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Department;
-use App\Models\Name;
-use App\Models\news;
+
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-use Psy\Util\Str;
-use Spatie\Permission\Models\Role;
+
 
 class DatabaseSeeder extends Seeder
 {

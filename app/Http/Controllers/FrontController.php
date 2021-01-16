@@ -34,6 +34,7 @@ class FrontController extends Controller
     {
         $data = [];
         $approved_data = [];
+        $departments = Department::all();
         $title = "";
         if($page == "information-technology"){
             if(Auth::user()->hasPermissionTo($page) || Auth::user()->hasRole('Admin')) {
@@ -204,30 +205,8 @@ class FrontController extends Controller
                 abort(403);
             }
         }
-        else if($page == "idea"){
-            if(Auth::user()->hasPermissionTo($page) || Auth::user()->hasRole('Admin')) {
-                $title = "Idea";
-                return view('pages.' . $page, compact('title'));
-            }else{
-                abort(403);
-            }
-        }
-        else if($page == "how-it-works"){
-            if(Auth::user()->hasPermissionTo($page) || Auth::user()->hasRole('Admin')) {
-                $title = "How It Works";
-                return view('pages.' . $page, compact('title'));
-            }else{
-                abort(403);
-            }
-        }
-        else if($page == "contact-us"){
-            if(Auth::user()->hasPermissionTo($page) || Auth::user()->hasRole('Admin')) {
-                $title = "Contact Us";
-                return view('pages.' . $page, compact('title'));
-            }else{
-                abort(403);
-            }
-        }
+
+
         if($data != []) {
             $data->actions = $this->convert_to_array($data->actions);
             $data->key_decisions = $this->convert_to_array($data->key_decisions);
@@ -238,7 +217,7 @@ class FrontController extends Controller
         }
 
         // TODO: Implement __invoke() method.
-        return view('pages.message-page')->with(['data' => $data, 'title' => $title, 'approved_data' => $approved_data]);
+        return view('pages.message-page')->with(['data' => $data, 'title' => $title, 'approved_data' => $approved_data , 'departments' => $departments]);
     }
     public function home(){
         $news = news::all();
@@ -282,7 +261,106 @@ class FrontController extends Controller
     public function submitForReview(Request $request, $id){
         if(Auth::user()->hasPermissionTo('can-submit-for-review') || Auth::user()->hasRole('Admin')) {
             $model = $request->meeting;
-            if ($model == "DECCC") {
+            if ($model == "ITDEVCC") {
+                $itdevcc = ITDEVCC::where('id', $id)->first();
+                $itdevcc->submit_for_review = Carbon::now();
+                $itdevcc->slug = Str::slug($request->slug);
+                $names = $this->getNames($itdevcc->present);
+                foreach ($names as $name){
+                    $user = User::where('name',$name)->first();
+                    Mail::to($user->email)->send(new MeetingMail($itdevcc));
+                }
+                if ($itdevcc->save()) {
+                    return redirect()->back()->with('success', 'Message has been successfully submitted for review');
+                }
+                return redirect()->back()->with('error', 'Failed to submit your message');
+            }
+            else if ($model == "CREDRISKCC") {
+                $credriskcc = CREDRISKCC::where('id', $id)->first();
+                $credriskcc->submit_for_review = Carbon::now();
+                $credriskcc->slug = Str::slug($request->slug);
+                $names = $this->getNames($credriskcc->present);
+                foreach ($names as $name){
+                    $user = User::where('name',$name)->first();
+                    Mail::to($user->email)->send(new MeetingMail($credriskcc));
+                }
+                if ($credriskcc->save()) {
+                    return redirect()->back()->with('success', 'Message has been successfully submitted for review');
+                }
+                return redirect()->back()->with('error', 'Failed to submit your message');
+            }
+            else if ($model == "BOARDCC") {
+                $boardcc = BOARDCC::where('id', $id)->first();
+                $boardcc->submit_for_review = Carbon::now();
+                $boardcc->slug = Str::slug($request->slug);
+                $names = $this->getNames($boardcc->present);
+                foreach ($names as $name){
+                    $user = User::where('name',$name)->first();
+                    Mail::to($user->email)->send(new MeetingMail($boardcc));
+                }
+                if ($boardcc->save()) {
+                    return redirect()->back()->with('success', 'Message has been successfully submitted for review');
+                }
+                return redirect()->back()->with('error', 'Failed to submit your message');
+            }
+            else if ($model == "OPSCC") {
+                $opscc = OPSCC::where('id', $id)->first();
+                $opscc->submit_for_review = Carbon::now();
+                $opscc->slug = Str::slug($request->slug);
+                $names = $this->getNames($opscc->present);
+                foreach ($names as $name){
+                    $user = User::where('name',$name)->first();
+                    Mail::to($user->email)->send(new MeetingMail($opscc));
+                }
+                if ($opscc->save()) {
+                    return redirect()->back()->with('success', 'Message has been successfully submitted for review');
+                }
+                return redirect()->back()->with('error', 'Failed to submit your message');
+            }
+            else if ($model == "FCCC") {
+                $fccc = FCCC::where('id', $id)->first();
+                $fccc->submit_for_review = Carbon::now();
+                $fccc->slug = Str::slug($request->slug);
+                $names = $this->getNames($fccc->present);
+                foreach ($names as $name){
+                    $user = User::where('name',$name)->first();
+                    Mail::to($user->email)->send(new MeetingMail($fccc));
+                }
+                if ($fccc->save()) {
+                    return redirect()->back()->with('success', 'Message has been successfully submitted for review');
+                }
+                return redirect()->back()->with('error', 'Failed to submit your message');
+            }
+            else if ($model == "FRAUDCC") {
+                $fraudcc = FRAUDCC::where('id', $id)->first();
+                $fraudcc->submit_for_review = Carbon::now();
+                $fraudcc->slug = Str::slug($request->slug);
+                $names = $this->getNames($fraudcc->present);
+                foreach ($names as $name){
+                    $user = User::where('name',$name)->first();
+                    Mail::to($user->email)->send(new MeetingMail($fraudcc));
+                }
+                if ($fraudcc->save()) {
+                    return redirect()->back()->with('success', 'Message has been successfully submitted for review');
+                }
+                return redirect()->back()->with('error', 'Failed to submit your message');
+            }
+            else if ($model == "RISKACC") {
+                $riskacc = RISKACC::where('id', $id)->first();
+                $riskacc->submit_for_review = Carbon::now();
+                $riskacc->slug = Str::slug($request->slug);
+                $names = $this->getNames($riskacc->present);
+                foreach ($names as $name){
+                    $user = User::where('name',$name)->first();
+                    Mail::to($user->email)->send(new MeetingMail($riskacc));
+                }
+                if ($riskacc->save()) {
+                    return redirect()->back()->with('success', 'Message has been successfully submitted for review');
+                }
+                return redirect()->back()->with('error', 'Failed to submit your message');
+            }
+
+            else if ($model == "DECCC") {
                 $deccc = DECCC::where('id', $id)->first();
                 $deccc->submit_for_review = Carbon::now();
                 $deccc->slug = Str::slug($request->slug);
@@ -296,6 +374,77 @@ class FrontController extends Controller
                 }
                 return redirect()->back()->with('error', 'Failed to submit your message');
             }
+            else if ($model == "MONENDCC") {
+                $monendcc = MONENDCC::where('id', $id)->first();
+                $monendcc->submit_for_review = Carbon::now();
+                $monendcc->slug = Str::slug($request->slug);
+                $names = $this->getNames($monendcc->present);
+                foreach ($names as $name){
+                    $user = User::where('name',$name)->first();
+                    Mail::to($user->email)->send(new MeetingMail($monendcc));
+                }
+                if ($monendcc->save()) {
+                    return redirect()->back()->with('success', 'Message has been successfully submitted for review');
+                }
+                return redirect()->back()->with('error', 'Failed to submit your message');
+            }
+            else if ($model == "ONBOARDCC") {
+                $onboardcc = ONBOARDCC::where('id', $id)->first();
+                $onboardcc->submit_for_review = Carbon::now();
+                $onboardcc->slug = Str::slug($request->slug);
+                $names = $this->getNames($onboardcc->present);
+                foreach ($names as $name){
+                    $user = User::where('name',$name)->first();
+                    Mail::to($user->email)->send(new MeetingMail($onboardcc));
+                }
+                if ($onboardcc->save()) {
+                    return redirect()->back()->with('success', 'Message has been successfully submitted for review');
+                }
+                return redirect()->back()->with('error', 'Failed to submit your message');
+            }
+            else if ($model == "ONBOARDCC") {
+                $onboardcc = ONBOARDCC::where('id', $id)->first();
+                $onboardcc->submit_for_review = Carbon::now();
+                $onboardcc->slug = Str::slug($request->slug);
+                $names = $this->getNames($onboardcc->present);
+                foreach ($names as $name){
+                    $user = User::where('name',$name)->first();
+                    Mail::to($user->email)->send(new MeetingMail($onboardcc));
+                }
+                if ($onboardcc->save()) {
+                    return redirect()->back()->with('success', 'Message has been successfully submitted for review');
+                }
+                return redirect()->back()->with('error', 'Failed to submit your message');
+            }
+            else if ($model == "MARKETCC") {
+                $marketcc = MARKETCC::where('id', $id)->first();
+                $marketcc->submit_for_review = Carbon::now();
+                $marketcc->slug = Str::slug($request->slug);
+                $names = $this->getNames($marketcc->present);
+                foreach ($names as $name){
+                    $user = User::where('name',$name)->first();
+                    Mail::to($user->email)->send(new MeetingMail($marketcc));
+                }
+                if ($marketcc->save()) {
+                    return redirect()->back()->with('success', 'Message has been successfully submitted for review');
+                }
+                return redirect()->back()->with('error', 'Failed to submit your message');
+            }
+            else if ($model == "FINCC") {
+                $fincc = FINCC::where('id', $id)->first();
+                $fincc->submit_for_review = Carbon::now();
+                $fincc->slug = Str::slug($request->slug);
+                $names = $this->getNames($fincc->present);
+                foreach ($names as $name){
+                    $user = User::where('name',$name)->first();
+                    Mail::to($user->email)->send(new MeetingMail($fincc));
+                }
+                if ($fincc->save()) {
+                    return redirect()->back()->with('success', 'Message has been successfully submitted for review');
+                }
+                return redirect()->back()->with('error', 'Failed to submit your message');
+            }
+
         }else{
             abort(403);
         }
@@ -410,13 +559,15 @@ class FrontController extends Controller
     }
     public function addMessage($model){
         $title = "Add Message";
-        return view("pages.add-message",compact('title','model'));
+        $departments = Department::all();
+        return view("pages.add-message")->with(['title'=> $title,'model'=> $model, 'departments' => $departments]);
     }
     public function saveMessage(Request $request,$model){
         $data = $request->except('_token');
         $data['present'] = implode(",",$request->present);
         $data['user_id'] = Auth::user()->id;
-        if($model == "decisions"){
+        $data['slug'] = Str::slug($model);
+        if($model == "Decisions"){
             $data['meeting'] = "DECCC";
             DECCC::create($data);
             return redirect(route('page',"decisions"))->with('success','Message has been saved successfully');
@@ -427,10 +578,10 @@ class FrontController extends Controller
             return redirect(route('page',"credit-risk"))->with('success','Message has been saved successfully');
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('error','Message not saved');
     }
-    public function privacyPolicy(){
-        return view('pages.privacy-policy');
+    public function saveChanges(Request $request,$title){
+
     }
     public function downloadPDF($pdf){
         $file = public_path('pdf/').$pdf;
@@ -439,6 +590,16 @@ class FrontController extends Controller
         );
 
         return response()->download($file, 'policy.pdf', $headers);
+    }
+    public function idea(){
+        $title = "IDEA";
+        $departments = Department::all();
+        return view('pages.idea')->with(['title' => $title, 'departments' => $departments]);
+    }
+    public function howItWorks(){
+        $title = "How It Works";
+        $departments = Department::all();
+        return view('pages.how-it-works')->with(['title' => $title, 'departments' => $departments]);
     }
 
 }

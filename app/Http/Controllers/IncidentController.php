@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\IncidentMail;
+use App\Models\Department;
 use App\Models\Incident;
 use App\Models\Name;
 use App\Models\User;
@@ -18,9 +19,11 @@ class IncidentController extends Controller
      */
     public function index()
     {
+        $title = "Incident";
         $open_incidents = Incident::where('status',0)->get();
         $close_incidents = Incident::where('status',1)->get();
-        return view('pages.incident')->with(['open_incidents'=> $open_incidents, 'close_incidents' => $close_incidents]);
+        $departments = Department::all();
+        return view('pages.incident')->with(['open_incidents'=> $open_incidents, 'close_incidents' => $close_incidents, 'title' => $title ,'departments' => $departments]);
     }
 
     /**
