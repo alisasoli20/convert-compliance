@@ -329,7 +329,7 @@
         </div>
             <form method="POST" action="{{ ($data!=null)?(($data->submit_for_review == null)?route('submit.for.review',$data->id):route('submit.message',$data->id)):"#" }}">
             @csrf
-                <input type="text" value="{{ $data->meeting }}" name="meeting" hidden>
+                <input type="text" value="{{ ($data!=null)?$data->meeting:"" }}" name="meeting" hidden>
                 <div class="row">
                     <div class="col">
                         <div class="form-group row">
@@ -449,11 +449,11 @@
                     <div class="col-md-12 mb-4">
                         <a href="{{ route('add.message',$title)}}" class="btn btn-default text-white custom-buttons"><i class="fas fa-plus text-white mr-3"></i>Add Message</a>
                     </div>
+                   {{-- <div class="col-md-12 mb-4">
+                        <a href="{{ ($data!=null)?route('save.changes',[$data->id,$data->meeting]):"" }}" class="btn btn-default text-white custom-buttons" ><i class="fas fa-save text-white mr-3"></i>Save Changes</a>
+                    </div>--}}
                     <div class="col-md-12 mb-4">
-                        <a href="{{ route('save.message',$title)}}" class="btn btn-default text-white custom-buttons" {{ ($data !=null)?(($data->submit_for_review != null)?"enabled":"disabled"):"disabled" }}><i class="fas fa-save text-white mr-3"></i>Save Changes</a>
-                    </div>
-                    <div class="col-md-12 mb-4">
-                        <a href="{{ route('add.message',$title)}}" class="btn btn-default text-white custom-buttons"><i class="fas fa-times text-white mr-3"></i>Discard Message</a>
+                        <a href="{{ ($data!=null)?route('discard.message',[$data->id, $data->meeting]):"#"}}" class="btn btn-default text-white custom-buttons"><i class="fas fa-times text-white mr-3"></i>Discard Message</a>
                     </div>
                 </div>
             </form>

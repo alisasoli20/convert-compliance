@@ -19,6 +19,6 @@
 <h3>Meeting Google Drive Links: {{ $meeting['link'] }}</h3>
 <h3>Meeting Notes: {{ $meeting['notes'] }}</h3>
 <h3>You can edit the meeting details if you have permission: </h3>
-<a href="{{ route('page',$meeting['slug']) }}">Go to meeting</a>
+<a href="{{ route('save.changes',[$meeting['id'],$meeting['meeting']]) }}">Go to meeting</a>
 </body>
 </html>

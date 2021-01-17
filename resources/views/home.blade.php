@@ -239,7 +239,7 @@
         @foreach($departments as $department)
         <div class="col-md-3 col-12 centericons mb-5 text-center">
             <h5>{{ $department->name }}</h5>
-            <a style="background-color:#ffffff;text-decoration: none!important; text-underline-style: none!important;" href="{{ route('page',\Illuminate\Support\Str::slug($department->name)) }}"><img style="border-radius: 5px; box-shadow: 1px 3px 5px" src="{{asset('images/'.$department->image)}}" width="200px" height="150px" alt="icon"></a>
+            <a style="background-color:#ffffff;text-decoration: none!important; text-underline-style: none!important;" href="{{ route('page',\Illuminate\Support\Str::slug($department->name)) }}"><img style="border-radius: 5px; box-shadow: 1px 3px 5px" src="{{asset('images/'.$department->slug.'.jpg')}}" width="200px" height="150px" alt="icon"></a>
         </div>
         @endforeach
         {{--<div class="col-md-3 col-12 centericons">

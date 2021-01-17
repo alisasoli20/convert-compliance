@@ -3,10 +3,15 @@
 namespace Database\Seeders;
 
 
+use App\Models\Department;
+use App\Models\Name;
+use App\Models\news;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 
 class DatabaseSeeder extends Seeder
@@ -19,9 +24,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        /*Role::create([
+        Role::create([
             'name' => 'Admin'
-        ]);*/
+        ]);
         User::insert([
                 [
                     'name' => 'admin',
@@ -111,7 +116,7 @@ class DatabaseSeeder extends Seeder
         );
         $user = User::where('email','admin@admin.com')->first();
         $user->assignRole('Admin');
-        /*Name::insert([
+        Name::insert([
             ['key' => "MR",
             'value' => "Mykhailo Rogalskiy"],
             ['key' => "CH",
@@ -139,8 +144,8 @@ class DatabaseSeeder extends Seeder
             ['key' => "OG",
                 'value' => "Oleg Gorokhovskiy"],
 
-        ]);*/
-        /*Department::insert([
+        ]);
+        Department::insert([
             [
              'name' => 'Information Technology',
              'slug' => \Illuminate\Support\Str::slug('Information Technology'),
@@ -226,8 +231,8 @@ class DatabaseSeeder extends Seeder
                 'created_at' => Carbon::now()
             ]
             ]
-        );*/
-        /*news::insert(
+        );
+        news::insert(
             [
                 [
                     'title' => 'a',
@@ -280,6 +285,6 @@ class DatabaseSeeder extends Seeder
                     'date' => 'a'
                 ],
             ]
-        );*/
+        );
     }
 }

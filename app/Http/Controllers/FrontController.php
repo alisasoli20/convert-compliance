@@ -527,7 +527,36 @@ class FrontController extends Controller
                 }
                 return redirect()->back()->with('success','Failed to submit your message');
             }
-
+            else if($model == "FRAUDCC"){
+                $fraudcc= FRAUDCC::where('id',$id)->first();
+                $meeting = $fraudcc;
+                $pdf = Pdf::loadView('pdf', compact('meeting'));
+                $filname = time() . '.' . 'pdf';
+                $filepath = public_path('pdf/' . $filname);
+                $pdf->save($filepath);
+                $fraudcc->pdf = $filname;
+                $fraudcc->user_id = Auth::user()->id;
+                $fraudcc->submitted_at = Carbon::now();
+                if($fraudcc->save()){
+                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                }
+                return redirect()->back()->with('success','Failed to submit your message');
+            }
+            else if($model == "RISKACC"){
+                $riskacc= RISKACC::where('id',$id)->first();
+                $meeting = $riskacc;
+                $pdf = Pdf::loadView('pdf', compact('meeting'));
+                $filname = time() . '.' . 'pdf';
+                $filepath = public_path('pdf/' . $filname);
+                $pdf->save($filepath);
+                $riskacc->pdf = $filname;
+                $riskacc->user_id = Auth::user()->id;
+                $riskacc->submitted_at = Carbon::now();
+                if($riskacc->save()){
+                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                }
+                return redirect()->back()->with('success','Failed to submit your message');
+            }
             else if($model == "DECCC"){
                 $deccc = DECCC::where('id',$id)->first();
                 $meeting = $deccc;
@@ -543,16 +572,165 @@ class FrontController extends Controller
                 }
                 return redirect()->back()->with('success','Failed to submit your message');
             }
+            else if($model == "MONENDCC"){
+                $monendcc = MONENDCC::where('id',$id)->first();
+                $meeting = $monendcc;
+                $pdf = Pdf::loadView('pdf', compact('meeting'));
+                $filname = time() . '.' . 'pdf';
+                $filepath = public_path('pdf/' . $filname);
+                $pdf->save($filepath);
+                $monendcc->pdf = $filname;
+                $monendcc->user_id = Auth::user()->id;
+                $monendcc->submitted_at = Carbon::now();
+                if($monendcc->save()){
+                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                }
+                return redirect()->back()->with('success','Failed to submit your message');
+            }
+            else if($model == "ONBOARDCC"){
+                $onboardcc = ONBOARDCC::where('id',$id)->first();
+                $meeting = $onboardcc;
+                $pdf = Pdf::loadView('pdf', compact('meeting'));
+                $filname = time() . '.' . 'pdf';
+                $filepath = public_path('pdf/' . $filname);
+                $pdf->save($filepath);
+                $onboardcc->pdf = $filname;
+                $onboardcc->user_id = Auth::user()->id;
+                $onboardcc->submitted_at = Carbon::now();
+                if($onboardcc->save()){
+                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                }
+                return redirect()->back()->with('success','Failed to submit your message');
+            }
+            else if($model == "MARKETCC"){
+                $marketcc = MARKETCC::where('id',$id)->first();
+                $meeting = $marketcc;
+                $pdf = Pdf::loadView('pdf', compact('meeting'));
+                $filname = time() . '.' . 'pdf';
+                $filepath = public_path('pdf/' . $filname);
+                $pdf->save($filepath);
+                $marketcc->pdf = $filname;
+                $marketcc->user_id = Auth::user()->id;
+                $marketcc->submitted_at = Carbon::now();
+                if($marketcc->save()){
+                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                }
+                return redirect()->back()->with('success','Failed to submit your message');
+            }
+            else if($model == "FINCC"){
+                $fincc = FINCC::where('id',$id)->first();
+                $meeting = $fincc;
+                $pdf = Pdf::loadView('pdf', compact('meeting'));
+                $filname = time() . '.' . 'pdf';
+                $filepath = public_path('pdf/' . $filname);
+                $pdf->save($filepath);
+                $fincc->pdf = $filname;
+                $fincc->user_id = Auth::user()->id;
+                $fincc->submitted_at = Carbon::now();
+                if($fincc->save()){
+                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                }
+                return redirect()->back()->with('success','Failed to submit your message');
+            }
+
         }else{
             abort(403);
         }
     }
     public function discardMessage($id,$model){
-        if($model == "DECCC"){
+        if($model == "ITDEVCC"){
+            $itdevcc = ITDEVCC::where('id',$id)->first();
+            $itdevcc->discarded = 1;
+            if($itdevcc->save()){
+                return redirect()->back()->with('success','Message has been successfully discarded.');
+            }
+            return redirect()->back()->with('success',"Failed due to some reason");
+        }
+        else if($model == "CREDRISKCC"){
+            $credriskcc = CREDRISKCC::where('id',$id)->first();
+            $credriskcc->discarded = 1;
+            if($credriskcc->save()){
+                return redirect()->back()->with('success','Message has been successfully discarded.');
+            }
+            return redirect()->back()->with('success',"Failed due to some reason");
+        }
+        else if($model == "BOARDCC"){
+            $boardcc = BOARDCC::where('id',$id)->first();
+            $boardcc->discarded = 1;
+            if($boardcc->save()){
+                return redirect()->back()->with('success','Message has been successfully discarded.');
+            }
+            return redirect()->back()->with('success',"Failed due to some reason");
+        }
+        else if($model == "OPSCC"){
+            $opscc = OPSCC::where('id',$id)->first();
+            $opscc->discarded = 1;
+            if($opscc->save()){
+                return redirect()->back()->with('success','Message has been successfully discarded.');
+            }
+            return redirect()->back()->with('success',"Failed due to some reason");
+        }
+        else if($model == "FCCC"){
+            $fccc = FCCC::where('id',$id)->first();
+            $fccc->discarded = 1;
+            if($fccc->save()){
+                return redirect()->back()->with('success','Message has been successfully discarded.');
+            }
+            return redirect()->back()->with('success',"Failed due to some reason");
+        }
+        else if($model == "FRAUDCC"){
+            $fraudcc = FRAUDCC::where('id',$id)->first();
+            $fraudcc->discarded = 1;
+            if($fraudcc->save()){
+                return redirect()->back()->with('success','Message has been successfully discarded.');
+            }
+            return redirect()->back()->with('success',"Failed due to some reason");
+        }
+        else if($model == "RISKACC"){
+            $riskacc = RISKACC::where('id',$id)->first();
+            $riskacc->discarded = 1;
+            if($riskacc->save()){
+                return redirect()->back()->with('success','Message has been successfully discarded.');
+            }
+            return redirect()->back()->with('success',"Failed due to some reason");
+        }
+        else if($model == "DECCC"){
             $deccc = DECCC::where('id',$id)->first();
             $deccc->discarded = 1;
             if($deccc->save()){
-                return redirect()->back()->with('success','Message has been successfully submitted.');
+                return redirect()->back()->with('success','Message has been successfully discarded.');
+            }
+            return redirect()->back()->with('success',"Failed due to some reason");
+        }
+        else if($model == "MONENDCC"){
+            $monendcc = MONENDCC::where('id',$id)->first();
+            $monendcc->discarded = 1;
+            if($monendcc->save()){
+                return redirect()->back()->with('success','Message has been successfully discarded.');
+            }
+            return redirect()->back()->with('success',"Failed due to some reason");
+        }
+        else if($model == "ONBOARDCC"){
+            $onboardcc = ONBOARDCC::where('id',$id)->first();
+            $onboardcc->discarded = 1;
+            if($onboardcc->save()){
+                return redirect()->back()->with('success','Message has been successfully discarded.');
+            }
+            return redirect()->back()->with('success',"Failed due to some reason");
+        }
+        else if($model == "MARKETCC"){
+            $marketcc = MARKETCC::where('id',$id)->first();
+            $marketcc->discarded = 1;
+            if($marketcc->save()){
+                return redirect()->back()->with('success','Message has been successfully discarded.');
+            }
+            return redirect()->back()->with('success',"Failed due to some reason");
+        }
+        else if($model == "FINCC"){
+            $fincc = FINCC::where('id',$id)->first();
+            $fincc->discarded = 1;
+            if($fincc->save()){
+                return redirect()->back()->with('success','Message has been successfully discarded.');
             }
             return redirect()->back()->with('success',"Failed due to some reason");
         }
@@ -567,21 +745,105 @@ class FrontController extends Controller
         $data['present'] = implode(",",$request->present);
         $data['user_id'] = Auth::user()->id;
         $data['slug'] = Str::slug($model);
-        if($model == "Decisions"){
+        //dd($model);
+        if($model == "Information Technology"){
+            $data['meeting'] = "ITDEVCC";
+            ITDEVCC::create($data);
+            return redirect(route('page',$data['slug']))->with('success','Message has been saved successfully');
+        }
+        else if($model == "Credit Risk"){
+            $data['meeting'] = "CREDRISKCC";
+            CREDRISKCC::create($data);
+            return redirect(route('page',$data['slug']))->with('success','Message has been saved successfully');
+        }
+        else if($model == "Board"){
+            $data['meeting'] = "BOARDCC";
+            BOARDCC::create($data);
+            return redirect(route('page',$data['slug']))->with('success','Message has been saved successfully');
+        }
+        else if($model == "Operations"){
+            $data['meeting'] = "OPSCC";
+            OPSCC::create($data);
+            return redirect(route('page',$data['slug']))->with('success','Message has been saved successfully');
+        }
+        else if($model == "Financial Crime"){
+            $data['meeting'] = "FCCC";
+            FCCC::create($data);
+            return redirect(route('page',$data['slug']))->with('success','Message has been saved successfully');
+        }
+        else if($model == "Fraud"){
+            $data['meeting'] = "FRAUDCC";
+            FRAUDCC::create($data);
+            return redirect(route('page',$data['slug']))->with('success','Message has been saved successfully');
+        }
+        else if($model == "Risk Acceptance"){
+            $data['meeting'] = "RISKACC";
+            RISKACC::create($data);
+            return redirect(route('page',$data['slug']))->with('success','Message has been saved successfully');
+        }
+        else if($model == "Decisions"){
             $data['meeting'] = "DECCC";
             DECCC::create($data);
             return redirect(route('page',"decisions"))->with('success','Message has been saved successfully');
         }
-        if($model == "Credit Risk"){
-            $data['meeting'] = "CREDRISKCC";
-            CREDRISKCC::create($data);
-            return redirect(route('page',"credit-risk"))->with('success','Message has been saved successfully');
+        else if($model == "End of Month"){
+            $data['meeting'] = "MONENDCC";
+            MONENDCC::create($data);
+            return redirect(route('page',$data['slug']))->with('success','Message has been saved successfully');
         }
-
+        else if($model == "On Boarding"){
+            $data['meeting'] = "ONBOARDCC";
+            ONBOARDCC::create($data);
+            return redirect(route('page',$data['slug']))->with('success','Message has been saved successfully');
+        }
+        else if($model == "Marketing"){
+            $data['meeting'] = "MARKETCC";
+            MARKETCC::create($data);
+            return redirect(route('page',$data['slug']))->with('success','Message has been saved successfully');
+        }
+        else if($model == "Finance"){
+            $data['meeting'] = "FINCC";
+            FINCC::create($data);
+            return redirect(route('page',$data['slug']))->with('success','Message has been saved successfully');
+        }
         return redirect()->back()->with('error','Message not saved');
     }
-    public function saveChanges(Request $request,$title){
-
+    public function saveChanges($id,$model){
+        $data = [];
+        $title = "";
+        $departments = Department::all();
+        if($model == "ITDEVCC"){
+            $title = "Information Technology";
+            $data = ITDEVCC::where('id',$id)->first();
+        }
+        else if($model == "MONENDCC"){
+            $title = "End of Month";
+            $data = MONENDCC::where('id',$id)->first();
+        }
+        if($data != []) {
+            $data->actions = $this->convert_to_array($data->actions);
+            $data->key_decisions = $this->convert_to_array($data->key_decisions);
+            $data->notes = $this->convert_to_array($data->notes);
+            $data->link = $this->convert_to_array($data->link);
+            $data->present = $this->getNames($data->present);
+            $data->not_present = $this->getNames($data->not_present);
+        }
+        return view('pages.save-changes')->with(['title' => $title, 'data' => $data, 'departments' => $departments]);
+    }
+    public function submitChanges(Request $request,$id,$model){
+        $departments = Department::all();
+        if($model == "ITDEVCC"){
+            $title = "Information Technology";
+            $data = $request->except("_token");
+            ITDEVCC::where('id',$id)->update($data);
+            return redirect(route('page',Str::slug($title)),compact('title'));
+        }
+        else if($model == "MONENDCC"){
+            $title = "Information Technology";
+            $data = $request->except("_token");
+            MONENDCC::where('id',$id)->update($data);
+            return redirect(route('page',Str::slug($title)),compact('title'));
+        }
     }
     public function downloadPDF($pdf){
         $file = public_path('pdf/').$pdf;
