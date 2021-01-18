@@ -44,4 +44,7 @@ class User extends Authenticatable
     public function deccc(){
         return $this->hasMany(DECCC::class);
     }
+    public function incident(){
+        return $this->hasMany(Incident::class);
+    }
 }

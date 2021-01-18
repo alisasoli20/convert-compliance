@@ -7,8 +7,11 @@ use App\Models\Department;
 use App\Models\Incident;
 use App\Models\Name;
 use App\Models\User;
+use GrofGraf\LaravelPDFMerger\PDFMerger;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use niklasravnsborg\LaravelPdf\Facades\Pdf;
 
 class IncidentController extends Controller
 {
@@ -64,7 +67,9 @@ class IncidentController extends Controller
             Mail::to($user->email)->send(new IncidentMail($data));
         }
 
+
         $data = $request->except('_token');
+        $data['user_id'] = Auth::user()->id;
         Incident::insert($data);
         return redirect()->back()->with('success','Incident has been recorded successfully and Email has been sent to every Incident Lead');
     }
@@ -88,8 +93,10 @@ class IncidentController extends Controller
      */
     public function edit($id)
     {
+        $title = "Edit Incident";
+        $departments = Department::all();
         $incident = Incident::where('id',$id)->first();
-        return view('pages.edit-incident',compact('incident'));
+        return view('pages.edit-incident')->with(['title'=> $title, 'incident'=> $incident,'departments' => $departments]);
     }
 
     /**
@@ -101,7 +108,28 @@ class IncidentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $incident = Incident::where('id',$id)->first();
         $data = $request->except('_token');
+        if($incident->pdf == null) {
+            $pdf = Pdf::loadView('incident-pdf', compact('data'));
+            $filename = time() . '.' . 'pdf';
+            $filepath = public_path('pdf/' . $filename);
+            $pdf->save($filepath);
+            $data['pdf'] = $filename;
+        }else{
+            $merger = \PDFMerger::init();
+            $pdf = Pdf::loadView('incident-pdf', compact('data'));
+            $filename = time() . '.' . 'pdf';
+            $filepath = public_path('pdf/' . $filename);
+            $pdf->save($filepath);
+            $merger->addPathToPDF(public_path('pdf/'.$incident->pdf),'all','P');
+            $merger->addPathToPDF(public_path('pdf/'.$filename),'all','P');
+            $merger->merge();
+            $merger->save(public_path('pdf/'.$filename));
+            $data['pdf'] = $filename;
+            unlink(public_path('pdf/'.$incident->pdf));
+        }
+        $data['user_id'] = Auth::user()->id;
         Incident::where('id',$id)->update($data);
         return redirect(route('page','incident'))->with('success','Incident has been changed successfully');
     }

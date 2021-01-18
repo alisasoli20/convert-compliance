@@ -91,10 +91,13 @@
                 <a class="nav-link" href="{{ route('page','incident') }}">Incident</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('page','privacy-policy') }}">Privacy Policy</a>
+                <a class="nav-link" href="{{ route('page','privacy-policy') }}">Policy</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('page','process') }}">Process</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('page','investor-reporting') }}">Investor Reporting</a>
             </li>
             <li class="nav-item">
                 <form method="POST" action="{{ route('logout') }}">@csrf<button style="border: none; background-color: #ffffff; color: rgba(0,0,0,.5); font-weight: 500" class="nav-link" href="{{route('logout')}}">Logout</button></form>

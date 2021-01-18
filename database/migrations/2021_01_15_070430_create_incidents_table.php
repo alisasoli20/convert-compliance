@@ -31,6 +31,8 @@ class CreateIncidentsTable extends Migration
             $table->string('next_update');
             $table->string('remedial');
             $table->string('fca_major');
+            $table->string('pdf')->nullable();
+            $table->bigInteger('user_id');
             $table->timestamps();
         });
     }

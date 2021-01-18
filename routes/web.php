@@ -22,6 +22,12 @@ Route::get('/meeting/log',function (){
     $departments = \App\Models\Department::all();
    return view('pages.meeting_log',compact('title','departments'));
 });
+
+Route::get('incident-pdf',function (){
+    $data =[ ];
+    $data['status'] = "Opened";
+    return view('incident-pdf',compact('data'));
+});
 // FrontController Routes
 //Route::get('/test',['App\Http\Controllers\FrontController','test']);
 //Route::get('/pdf-test',['App\Http\Controllers\FrontController','pdf']);

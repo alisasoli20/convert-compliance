@@ -13,7 +13,7 @@ class CreateITDEVCCSTable extends Migration
      */
     public function up()
     {
-        Schema::create('ITDEVCC', function (Blueprint $table) {
+        Schema::create('itdevcc', function (Blueprint $table) {
             $table->id();
             $table->string("meeting_date","1000");
             $table->string("meeting","1000");

@@ -98,8 +98,10 @@ class PrivacyPolicyController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $policy = PolicyPrivacy::where('id',$id)->first();
         $data = $request->except('_token');
         if($request->pdf != null){
+            unlink(public_path('pdf/'.$policy->pdf));
             $filename = time().'.'.$request->pdf->extension();
             $request->pdf->move(public_path('pdf'),$filename);
             $data['pdf'] = $filename;
