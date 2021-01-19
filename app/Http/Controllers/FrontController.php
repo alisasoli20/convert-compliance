@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\MeetingMail;
+use App\Models\ActionLog;
 use App\Models\BOARDCC;
 use App\Models\CREDRISKCC;
 use App\Models\DECCC;
@@ -12,6 +13,7 @@ use App\Models\FINCC;
 use App\Models\FRAUDCC;
 use App\Models\ITDEVCC;
 use App\Models\MARKETCC;
+use App\Models\MeetingLog;
 use App\Models\MONENDCC;
 use App\Models\Name;
 use App\Models\news;
@@ -813,12 +815,37 @@ class FrontController extends Controller
         $title = "";
         $departments = Department::all();
         if($model == "ITDEVCC"){
-            $title = "Information Technology";
             $data = ITDEVCC::where('id',$id)->first();
         }
-        else if($model == "MONENDCC"){
-            $title = "End of Month";
+        if($model == "CREDRISKCC"){
+            $data = CREDRISKCC::where('id',$id)->first();
+        }
+        if($model == "BOARDCC"){
+            $data = BOARDCC::where('id',$id)->first();
+        }
+        if($model == "OPSCC"){
+            $data = OPSCC::where('id',$id)->first();
+        }
+        if($model == "FCCC"){
+            $data = FCCC::where('id',$id)->first();
+        }
+        if($model == "RISKACC"){
+            $data = RISKACC::where('id',$id)->first();
+        }
+        if($model == "DECCC"){
+            $data = DECCC::where('id',$id)->first();
+        }
+        if($model == "MONENDCC"){
             $data = MONENDCC::where('id',$id)->first();
+        }
+        if($model == "ONBOARDCC"){
+            $data = ONBOARDCC::where('id',$id)->first();
+        }
+        if($model == "MARKETCC"){
+            $data = MARKETCC::where('id',$id)->first();
+        }
+        if($model == "FINCC"){
+            $data = FINCC::where('id',$id)->first();
         }
         if($data != []) {
             $data->actions = $this->convert_to_array($data->actions);
@@ -826,7 +853,7 @@ class FrontController extends Controller
             $data->notes = $this->convert_to_array($data->notes);
             $data->link = $this->convert_to_array($data->link);
             $data->present = $this->getNames($data->present);
-            $data->not_present = $this->getNames($data->not_present);
+            //$data->not_present = $this->getNames($data->not_present);
         }
         return view('pages.save-changes')->with(['title' => $title, 'data' => $data, 'departments' => $departments]);
     }
@@ -835,13 +862,85 @@ class FrontController extends Controller
         if($model == "ITDEVCC"){
             $title = "Information Technology";
             $data = $request->except("_token");
+            $data['present'] = implode(',',$data['present']);
             ITDEVCC::where('id',$id)->update($data);
             return redirect(route('page',Str::slug($title)),compact('title'));
+        }
+        else if($model == "CREDRISKCC"){
+            $title = "Information Technology";
+            $data = $request->except("_token");
+            $data['present'] = implode(',',$data['present']);
+            CREDRISKCC::where('id',$id)->update($data);
+            return redirect(route('page',Str::slug($title)),compact('title'));
+        }
+        else if($model == "BOARDCC"){
+            $title = "Information Technology";
+            $data = $request->except("_token");
+            $data['present'] = implode(',',$data['present']);
+            BOARDCC::where('id',$id)->update($data);
+            return redirect(route('page',Str::slug($title)),compact('title'));
+        }
+        else if($model == "OPSCC"){
+            $title = "Information Technology";
+            $data = $request->except("_token");
+            $data['present'] = implode(',',$data['present']);
+            OPSCC::where('id',$id)->update($data);
+            return redirect(route('page',Str::slug($title)),compact('title'));
+        }
+        else if($model == "FCCC"){
+            $title = "Information Technology";
+            $data = $request->except("_token");
+            $data['present'] = implode(',',$data['present']);
+            FCCC::where('id',$id)->update($data);
+            return redirect(route('page',Str::slug($title)),compact('title'));
+        }
+        else if($model == "FRAUDCC"){
+            $title = "Information Technology";
+            $data = $request->except("_token");
+            $data['present'] = implode(',',$data['present']);
+            FRAUDCC::where('id',$id)->update($data);
+            return redirect(route('page',Str::slug($title)),compact('title'));
+        }
+        else if($model == "RISKACC"){
+            $title = "Information Technology";
+            $data = $request->except("_token");
+            $data['present'] = implode(',',$data['present']);
+            RISKACC::where('id',$id)->update($data);
+            return redirect(route('page',Str::slug($title)),compact('title'));
+        }
+        else if($model == "DECCC"){
+            $title = "Decisions";
+            $data = $request->except("_token");
+            $data['present'] = implode(',',$data['present']);
+            DECCC::where('id',$id)->update($data);
+            return redirect(route('page',Str::slug($title)))->with('success','Changes Saved');
         }
         else if($model == "MONENDCC"){
             $title = "Information Technology";
             $data = $request->except("_token");
+            $data['present'] = implode(',',$data['present']);
             MONENDCC::where('id',$id)->update($data);
+            return redirect(route('page',Str::slug($title)),compact('title'));
+        }
+        else if($model == "ONBOARDCC"){
+            $title = "Information Technology";
+            $data = $request->except("_token");
+            $data['present'] = implode(',',$data['present']);
+            ONBOARDCC::where('id',$id)->update($data);
+            return redirect(route('page',Str::slug($title)),compact('title'));
+        }
+        else if($model == "MARKETCC"){
+            $title = "Information Technology";
+            $data = $request->except("_token");
+            $data['present'] = implode(',',$data['present']);
+            MARKETCC::where('id',$id)->update($data);
+            return redirect(route('page',Str::slug($title)),compact('title'));
+        }
+        else if($model == "FINCC"){
+            $title = "Information Technology";
+            $data = $request->except("_token");
+            $data['present'] = implode(',',$data['present']);
+            FINCC::where('id',$id)->update($data);
             return redirect(route('page',Str::slug($title)),compact('title'));
         }
     }
@@ -862,6 +961,67 @@ class FrontController extends Controller
         $title = "How It Works";
         $departments = Department::all();
         return view('pages.how-it-works')->with(['title' => $title, 'departments' => $departments]);
+    }
+
+    public function meetingLog($model,$id){
+        $title  ="Meeting Log";
+        $data = [];
+        $departments = \App\Models\Department::all();
+        $users = User::all();
+        if($model == "ITDEVCC"){
+            $data = ITDEVCC::where('id',$id)->first();
+        }
+        if($model == "CREDRISKCC"){
+            $data = CREDRISKCC::where('id',$id)->first();
+        }
+        if($model == "BOARDCC"){
+            $data = BOARDCC::where('id',$id)->first();
+        }
+        if($model == "OPSCC"){
+            $data = OPSCC::where('id',$id)->first();
+        }
+        if($model == "FCCC"){
+            $data = FCCC::where('id',$id)->first();
+        }
+        if($model == "RISKACC"){
+            $data = RISKACC::where('id',$id)->first();
+        }
+        if($model == "DECCC"){
+            $data = DECCC::where('id',$id)->first();
+        }
+        if($model == "MONENDCC"){
+            $data = MONENDCC::where('id',$id)->first();
+        }
+        if($model == "ONBOARDCC"){
+            $data = ONBOARDCC::where('id',$id)->first();
+        }
+        if($model == "MARKETCC"){
+            $data = MARKETCC::where('id',$id)->first();
+        }
+        if($model == "FINCC"){
+            $data = FINCC::where('id',$id)->first();
+        }
+        return view('pages.meeting_log')->with(['title'=> $title,'departments'=>$departments, 'data' => $data, 'users' => $users]);
+    }
+    public function saveActionLog(Request $request,$model,$id){
+        $data = $request->except('_token');
+        $data['meeting'] = $model;
+        $data['meeting_id'] = $id;
+        ActionLog::insert($data);
+        return redirect()->back()->with('success','Action Log has been saved successfully');
+    }
+    public function saveDecisionLog(Request $request,$model,$id){
+        $data = $request->except('_token');
+        $data['meeting'] = $model;
+        $data['meeting_id'] = $id;
+        MeetingLog::insert($data);
+        return redirect()->back()->with('success','Meeting Log has been saved successfully');
+    }
+
+    public function contactUs(){
+        $title = "Contact Us";
+        $departments = Department::all();
+        return view('pages.contact-us')->with(['title' => $title, 'departments' => $departments]);
     }
 
 }

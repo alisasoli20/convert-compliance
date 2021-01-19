@@ -17,23 +17,16 @@ Route::get('/',['App\Http\Controllers\FrontController','login'])->name('/');
 Route::get('/home',["App\\Http\\Controllers\\FrontController","home"])->name("home")->middleware('auth');
 
 
-Route::get('/meeting/log',function (){
-    $title  ="Meeting Log";
-    $departments = \App\Models\Department::all();
-   return view('pages.meeting_log',compact('title','departments'));
-});
-
-Route::get('incident-pdf',function (){
-    $data =[ ];
-    $data['status'] = "Opened";
-    return view('incident-pdf',compact('data'));
-});
 // FrontController Routes
 //Route::get('/test',['App\Http\Controllers\FrontController','test']);
 //Route::get('/pdf-test',['App\Http\Controllers\FrontController','pdf']);
 
 
 Route::group(['middleware' => 'auth'],function(){
+    Route::get('/meeting/log/{model}/{id}',['App\Http\Controllers\FrontController','meetingLog'])->name('meeting.log');
+    Route::post('/meeting/log/action/{model}/{id}',['App\Http\Controllers\FrontController','saveActionLog'])->name('save.action.log');
+    Route::post('/meeting/log/decision/{model}/{id}',['App\Http\Controllers\FrontController','saveDecisionLog'])->name('save.decision.log');
+
     Route::get('/incident',['App\Http\Controllers\IncidentController','index']);
     Route::get('/edit/incident/{id}',['App\Http\Controllers\IncidentController','edit'])->name('edit.incident');
     Route::post('/edit/incident/{id}',['App\Http\Controllers\IncidentController','update']);
@@ -59,6 +52,8 @@ Route::group(['middleware' => 'auth'],function(){
     Route::post('/save/message/{model}',['App\Http\Controllers\FrontController','saveMessage'])->name('save.message');
     Route::get('/save/changes/{id}/{model}',['App\Http\Controllers\FrontController','saveChanges'])->name('save.changes');
     Route::post('/save/changes/{id}/{model}',['App\Http\Controllers\FrontController','submitChanges']);
+
+    Route::post('/save/contact/us',['App\Http\Controllers\ContactUsController','store'])->name('save.contact.us');
 });
 
 
@@ -94,6 +89,9 @@ Route::group(['prefix'=>'admin', 'middleware' => ['auth', 'role:Admin']], functi
         Route::get('/edit/{id}',['App\Http\Controllers\DepartmentController','edit'])->name('admin.department.edit');
         Route::post('/edit/{id}',['App\Http\Controllers\DepartmentController','update']);
     });
+
+    Route::get('/contact/us',['App\Http\Controllers\ContactUsController','index'])->name('admin.contact.us');
+    Route::delete('/contact/us/{id}',['App\Http\Controllers\ContactUsController','destroy'])->name('admin.delete.contact.us');
 
 });
 

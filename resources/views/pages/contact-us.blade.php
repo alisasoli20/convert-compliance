@@ -1,67 +1,76 @@
 @extends('layouts.master')
-@section('page-css')
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="pages_style.css">
-
-    <style>
-        div.jumbotron{
-
-            /* position: absolute; */
-            position: relative;
-            margin-top: 150px;
-        }
-
-        a{
-            /* float: right; */
-
-            padding-left: 50px;
-            text-decoration: none;
-            font-size: 16px;
-
-
-
-            color: white;
-        }
-        div#link{
-            margin-left: 1000px;
-
-        }
-
-
-
-
-    </style>
-    @endsection
-
-
-
 @section('content')
+    <section class="form-section pt-5">
+        <div class="container request-form mb-2">
+            @if(session()->has('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if(session()->has('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+            <div class="row mt-5">
+                <div class="col-md-4 col-4"></div>
+                <div class="col-md-4">
+                    <h1 class="contacthead">Contact Us</h1>
+                </div>
+                <div class="col-md-4 col-4"></div>
+            </div>
+            <div class="row ">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-3 col-3">
 
-<div class="jumbotron text-center">
-    <h1 style="color: black; ">Contact</h1>
-    <p1 style="color: black;"> Please reach out to find out more about covert compliance!</p1>
-</div>
+                        </div>
+                        <div class="col-md-2 line col-2">
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <h3>Contact</h3>
-            <p>Please reach out to Simon Harris is you have any queries</p>
-            <p>Phone: 07795273331</p>
-            <p>Email: simon.harris@getkoto.com</p>
+                        </div>
+                        <div class="col-md-2 col-2">
+                            <h5 class="linetext">ooo</h5>
+                        </div>
+                        <div class="col-md-2 line col-2">
+
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form method="POST" action="{{ route('save.contact.us') }}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Name</label>
+                            <input type="text" class="form-control fm3" name="name"  required id="exampleFormControlInput" placeholder="Enter Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Email address</label>
+                            <input type="email" class="form-control fm3" name="email" required id="exampleFormControlInput1" placeholder="Enter Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Contact</label>
+                            <input type="text" class="form-control fm3" id="exampleFormControlInput2" name="contact" placeholder="Enter Contact No" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Message</label>
+                            <textarea class="form-control fm3" id="exampleFormControlTextarea1" name="message" rows="3" required></textarea>
+                        </div>
+                        <button  class="btn btn-primary custom-buttons">Send</button>
+                    </form>
+                </div>
+                {{--            <div class="col-md-4">--}}
+                {{--                <img class="contactusimage" src="asset/images/contact%20us%20img.jpeg" alt="contact" >--}}
+
+                {{--            </div>--}}
+
+            </div>
         </div>
-        <div class="col-sm-4">
-            <h3>Meet Simon</h3>
-            <p>Simon is South African Entrepreneur based in London.</p>
-            <p>he is Chief Operating Officer of Koto Card Limited</p>
-        </div>
-        <div class="col-sm-4">
-            <img src="images/simon.png" width="150" height="150" style="margin-left: 0px;" alt="image is not found" style="margin: 30px 500px;">
-        </div>
-    </div>
-</div>
+    </section>
 @endsection

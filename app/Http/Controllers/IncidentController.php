@@ -53,15 +53,15 @@ class IncidentController extends Controller
         ];
         $this->validate($request,$rules);
         $data = $request->except('_token');
-        $teams = explode(',',$data['incident_lead']);
-        $users = array();
-        $i = 0;
-        foreach ($teams as $team){
-            $name = Name::where('key',$team)->first();
-            $users[$i] = $name->value;
-            $i++;
-        }
+        $users = $this->getNames($data['incident_lead']);
         $data['incident_lead'] = $users;
+        $data['incident_team'] = $this->getNames($data['incident_team']);
+        foreach ($users as $user){
+            $user = User::where('name',$user)->first();
+            Mail::to($user->email)->send(new IncidentMail($data));
+        }
+
+        $users = $data['incident_team'];
         foreach ($users as $user){
             $user = User::where('name',$user)->first();
             Mail::to($user->email)->send(new IncidentMail($data));
@@ -71,7 +71,7 @@ class IncidentController extends Controller
         $data = $request->except('_token');
         $data['user_id'] = Auth::user()->id;
         Incident::insert($data);
-        return redirect()->back()->with('success','Incident has been recorded successfully and Email has been sent to every Incident Lead');
+        return redirect()->back()->with('success','Incident has been recorded successfully and Email has been sent to every Incident Lead and Incident Team');
     }
 
     /**
@@ -116,6 +116,19 @@ class IncidentController extends Controller
             $filepath = public_path('pdf/' . $filename);
             $pdf->save($filepath);
             $data['pdf'] = $filename;
+            $users = $this->getNames($incident['incident_lead']);
+            $incident['incident_lead'] = $users;
+            $incident['incident_team'] = $this->getNames($incident['incident_team']);
+            foreach ($users as $user){
+                $user = User::where('name',$user)->first();
+                Mail::to($user->email)->send(new IncidentMail($incident));
+            }
+
+            $users = $incident['incident_team'];
+            foreach ($users as $user){
+                $user = User::where('name',$user)->first();
+                Mail::to($user->email)->send(new IncidentMail($incident));
+            }
         }else{
             $merger = \PDFMerger::init();
             $pdf = Pdf::loadView('incident-pdf', compact('data'));
@@ -128,6 +141,19 @@ class IncidentController extends Controller
             $merger->save(public_path('pdf/'.$filename));
             $data['pdf'] = $filename;
             unlink(public_path('pdf/'.$incident->pdf));
+            $users = $this->getNames($incident['incident_lead']);
+            $incident['incident_lead'] = $users;
+            $incident['incident_team'] = $this->getNames($incident['incident_team']);
+            foreach ($users as $user){
+                $user = User::where('name',$user)->first();
+                Mail::to($user->email)->send(new IncidentMail($incident));
+            }
+
+            $users = $incident['incident_team'];
+            foreach ($users as $user){
+                $user = User::where('name',$user)->first();
+                Mail::to($user->email)->send(new IncidentMail($incident));
+            }
         }
         $data['user_id'] = Auth::user()->id;
         Incident::where('id',$id)->update($data);
@@ -143,5 +169,16 @@ class IncidentController extends Controller
     public function destroy($id)
     {
         //
+    }
+    private function getNames($data){
+        $present = str_replace(' ','',$data);
+        $present = rtrim($present,", ");
+        $presents = explode(',',$present);
+        $present_names =[];
+        foreach ($presents as $present){
+            $name = Name::where('key',$present)->first();
+            $present_names[$name->key] = $name->value;
+        }
+        return $present_names;
     }
 }

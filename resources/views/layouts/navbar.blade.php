@@ -58,6 +58,15 @@
                         @foreach($departments as $department)
                             <li><a href="{{ route('page',\Illuminate\Support\Str::slug($department->name)) }}">{{ $department->name }}</a></li>
                         @endforeach
+                            <li >
+                                <a  href="{{ route('page','incident') }}">Incident</a>
+                            </li>
+                            <li >
+                                <a  href="{{ route('page','privacy-policy') }}">Policy</a>
+                            </li>
+                            <li >
+                                <a  href="{{ route('page','process') }}">Process</a>
+                            </li>
                     </ul>
                 </div>
             </li>
@@ -85,19 +94,14 @@
             {{--            </li>--}}
 
             <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                <a class="nav-link" href="{{ route('page','contact-us') }}">Contact</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('page','incident') }}">Incident</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('page','privacy-policy') }}">Policy</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('page','process') }}">Process</a>
-            </li>
-            <li class="nav-item">
+
+            {{--<li class="nav-item">
                 <a class="nav-link" href="{{ route('page','investor-reporting') }}">Investor Reporting</a>
+            </li>--}}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin') }}">Admin</a>
             </li>
             <li class="nav-item">
                 <form method="POST" action="{{ route('logout') }}">@csrf<button style="border: none; background-color: #ffffff; color: rgba(0,0,0,.5); font-weight: 500" class="nav-link" href="{{route('logout')}}">Logout</button></form>

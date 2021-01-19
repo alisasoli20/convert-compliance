@@ -15,6 +15,7 @@
                 <img style="border-radius: 50px" class="mb-3" src="{{ (auth()->user()->profile_picture != null)?asset('images/'.auth()->user()->profile_picture):asset('images/dummy.png') }}" width="35px" height="40px">
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a href="{{ route('home') }}" class="dropdown-item">Home</a>
                 <form id="logout" method="POST" action="{{ route('logout') }}">@csrf<button id="logout-btn" class="dropdown-item" href="#">Logout</button></form>
             </div>
         </li>

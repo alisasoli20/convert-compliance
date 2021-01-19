@@ -116,7 +116,7 @@
                         <div class="form-group row">
                             <div class="col">
                                 <label for="formGroupExampleInput2">Not Present:</label>
-                                <textarea name="not_present" id="" class="form-control" rows="2" placeholder="list not present">@if($data != null) @foreach($data->not_present as $not_present){{ $not_present }}@endforeach @endif</textarea>
+                                <textarea name="not_present" id="" class="form-control" rows="2" placeholder="list not present">{{ $data->not_present }}</textarea>
                             </div>
                         </div>
                         <!-- <input type="textarea" class="form-control" id="formGroupExampleInput2" placeholder="List not present"> -->

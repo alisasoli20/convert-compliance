@@ -286,5 +286,21 @@ class DatabaseSeeder extends Seeder
                 ],
             ]
         );
+      /*  Permission::create([
+            [ 0 => 'information-technology'],
+            [1 => 'credit-risk' ],
+            [2 => 'board' ],
+            ['3' => 'operations' ],
+            ['4' => 'financial-crime' ],
+            ['5' => 'fraud' ],
+            ['6' => 'risk-acceptance' ],
+            ['7' => 'decisions' ],
+            ['8' => 'end-of-month' ],
+            ['9' => 'on-boarding' ],
+            ['10' => 'marketing' ],
+            ['11' => 'finance' ],
+            ['12' => 'can-submit-for-review' ],
+            ['13' => 'can-submit' ],
+        ]);*/
     }
 }

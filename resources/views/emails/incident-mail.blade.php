@@ -11,7 +11,7 @@
 <h1>Incident has been registered Successfully</h1>
 <h3>Status: {{ ($incident['status'] == 0)?"Open":($incident['status'] == 1?"Closed":"Blocked") }}</h3>
 <h3>Incident Lead: @foreach($incident['incident_lead'] as $incident_lead ){{ $incident_lead."," }} @endforeach </h3>
-<h3>Incident Team: {{ $incident['incident_team'] }}</h3>
+<h3>Incident Team: @foreach($incident['incident_team'] as $incident_team ){{ $incident_team."," }} @endforeach  </h3>
 <h3>Date of Incident: {{ $incident['date_of_incident'] }}</h3>
 <h3>Time of Incident: {{ $incident['time_of_incident'] }}</h3>
 <h3>Impacted Platform: {{ $incident['impacted_platform'] }}</h3>

@@ -63,6 +63,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.contact.us') }}" class="nav-link" id="contact-us">
+                        <i class="nav-icon fab fa-mail-reply-all"></i>
+                        <p>
+                            Contact Us
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

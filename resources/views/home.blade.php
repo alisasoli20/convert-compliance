@@ -15,7 +15,7 @@
 <body>
 
 @include('layouts.navbar')
-<div id="carouselFadeExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+{{--<div id="carouselFadeExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner" role="listbox">
         <div class="carousel-item active ">
             <img class="d-block w-100" src="{{ asset('images/index_page/f2.jpg') }}" alt="First slide">
@@ -41,12 +41,12 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
-</div>
+</div>--}}
 <div class="container mt-5">
     <div class="row justify-content-center ">
 
         <div class="col-md-12 text-center">
-            <h3 class="mobh1">Welcome to KoTo</h3>
+            <h3 class="mobh1">Welcome to Covert Compliance</h3>
         </div>
 
     </div>
@@ -80,7 +80,7 @@
 
 
 </div><!--sec4-->
-<div class="container-fluid bg1 text-white mt-5">
+{{--<div class="container-fluid bg1 text-white mt-5">
     <div class="row">
         <div class="col-md-2">
 
@@ -151,60 +151,60 @@
         <div class="col-md-2">
 
         </div>
-        {{--            <div class="col-md-4 mb-5">--}}
+        --}}{{--            <div class="col-md-4 mb-5">--}}{{--
 
-        {{--                <h1 >General Secretaries</h1>--}}
-        {{--                <div class="sec4border"></div>--}}
-        {{--                <div class="row mt-4">--}}
-        {{--                    <div class="col-md-6 col-6">--}}
-        {{--                        <p>Dr. Amir ud din </p>--}}
+        --}}{{--                <h1 >General Secretaries</h1>--}}{{--
+        --}}{{--                <div class="sec4border"></div>--}}{{--
+        --}}{{--                <div class="row mt-4">--}}{{--
+        --}}{{--                    <div class="col-md-6 col-6">--}}{{--
+        --}}{{--                        <p>Dr. Amir ud din </p>--}}{{--
 
-        {{--                    </div>--}}
-        {{--                    <div class="col-md-6 col-6">--}}
-        {{--                        <p>  1957 – 1963</p>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-        {{--                <div class="row">--}}
-        {{--                    <div class="col-md-6 col-6">--}}
-        {{--                        <p>Dr. Amir ud din </p>--}}
+        --}}{{--                    </div>--}}{{--
+        --}}{{--                    <div class="col-md-6 col-6">--}}{{--
+        --}}{{--                        <p>  1957 – 1963</p>--}}{{--
+        --}}{{--                    </div>--}}{{--
+        --}}{{--                </div>--}}{{--
+        --}}{{--                <div class="row">--}}{{--
+        --}}{{--                    <div class="col-md-6 col-6">--}}{{--
+        --}}{{--                        <p>Dr. Amir ud din </p>--}}{{--
 
-        {{--                    </div>--}}
-        {{--                    <div class="col-md-6 col-6">--}}
-        {{--                        <p>  1957 – 1963</p>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-        {{--                <div class="row">--}}
-        {{--                    <div class="col-md-6 col-6">--}}
-        {{--                        <p>Dr. Amir ud din </p>--}}
+        --}}{{--                    </div>--}}{{--
+        --}}{{--                    <div class="col-md-6 col-6">--}}{{--
+        --}}{{--                        <p>  1957 – 1963</p>--}}{{--
+        --}}{{--                    </div>--}}{{--
+        --}}{{--                </div>--}}{{--
+        --}}{{--                <div class="row">--}}{{--
+        --}}{{--                    <div class="col-md-6 col-6">--}}{{--
+        --}}{{--                        <p>Dr. Amir ud din </p>--}}{{--
 
-        {{--                    </div>--}}
-        {{--                    <div class="col-md-6 col-6">--}}
-        {{--                        <p>  1957 – 1963</p>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-        {{--                <div class="row">--}}
-        {{--                    <div class="col-md-6 col-6">--}}
-        {{--                        <p>Dr. Amir ud din </p>--}}
+        --}}{{--                    </div>--}}{{--
+        --}}{{--                    <div class="col-md-6 col-6">--}}{{--
+        --}}{{--                        <p>  1957 – 1963</p>--}}{{--
+        --}}{{--                    </div>--}}{{--
+        --}}{{--                </div>--}}{{--
+        --}}{{--                <div class="row">--}}{{--
+        --}}{{--                    <div class="col-md-6 col-6">--}}{{--
+        --}}{{--                        <p>Dr. Amir ud din </p>--}}{{--
 
-        {{--                    </div>--}}
-        {{--                    <div class="col-md-6 col-6">--}}
-        {{--                        <p>  1957 – 1963</p>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
-        {{--                <div class="row">--}}
-        {{--                    <div class="col-md-6 col-6">--}}
-        {{--                        <p>Dr. Amir ud din </p>--}}
+        --}}{{--                    </div>--}}{{--
+        --}}{{--                    <div class="col-md-6 col-6">--}}{{--
+        --}}{{--                        <p>  1957 – 1963</p>--}}{{--
+        --}}{{--                    </div>--}}{{--
+        --}}{{--                </div>--}}{{--
+        --}}{{--                <div class="row">--}}{{--
+        --}}{{--                    <div class="col-md-6 col-6">--}}{{--
+        --}}{{--                        <p>Dr. Amir ud din </p>--}}{{--
 
-        {{--                    </div>--}}
-        {{--                    <div class="col-md-6 col-6">--}}
-        {{--                        <p>  1957 – 1963</p>--}}
-        {{--                    </div>--}}
-        {{--                </div>--}}
+        --}}{{--                    </div>--}}{{--
+        --}}{{--                    <div class="col-md-6 col-6">--}}{{--
+        --}}{{--                        <p>  1957 – 1963</p>--}}{{--
+        --}}{{--                    </div>--}}{{--
+        --}}{{--                </div>--}}{{--
 
-        {{--            </div>--}}
+        --}}{{--            </div>--}}{{--
     </div>
 
-</div>
+</div>--}}
 <div class="container mt-5">
     <div class="row justify-content-center ">
 
@@ -348,91 +348,10 @@
         @endforeach
 
     </div>
-    <div class="row mt-5">
-        <div class="col-md-4 col-4"></div>
-        <div class="col-md-4">
-            <h1 class="contacthead">Contact Us</h1>
-        </div>
-        <div class="col-md-4 col-4"></div>
-    </div>
-    <div class="row ">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <div class="row">
-                <div class="col-md-3 col-3">
 
-                </div>
-                <div class="col-md-2 line col-2">
-
-                </div>
-                <div class="col-md-2 col-2">
-                    <h5 class="linetext">ooo</h5>
-                </div>
-                <div class="col-md-2 line col-2">
-
-                </div>
-
-            </div>
-
-        </div>
-        <div class="col-md-4"></div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <form>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Name</label>
-                    <input type="text" class="form-control fm3" id="exampleFormControlInput" placeholder="Enter Name">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Email address</label>
-                    <input type="email" class="form-control fm3" id="exampleFormControlInput1" placeholder="Enter Email">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlInput1">Contact</label>
-                    <input type="text" class="form-control fm3" id="exampleFormControlInput2" placeholder="Enter Contact No">
-                </div>
-
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Example textarea</label>
-                    <textarea class="form-control fm3" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <button type="button" class="btn btn-outline-primary btn-lg">Send<i class="fas fa-arrow-right ml-3"></i></button>
-            </form>
-        </div>
-        {{--            <div class="col-md-4">--}}
-        {{--                <img class="contactusimage" src="asset/images/contact%20us%20img.jpeg" alt="contact" >--}}
-
-        {{--            </div>--}}
-
-    </div>
 
 </div>
 <div class="container-fluid bg2 mt-5 text-white ">
-    <div class="col-md-12 mt-5">
-        <h1 class="text-center gettouch">Get in Touch</h1>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-
-        </div>
-        <div class="col-md-5 foot">
-            <form>
-                <div class="form-group">
-
-                    <input type="text" class="form-control fm2"  placeholder="Name">
-                </div>
-                <div class="form-group">
-
-                    <input type="email" class="form-control fm2"  placeholder="Email">
-                </div>
-
-                <button type="button" class="btn btn-primary btn-lg btn-block button1">Subscribe<i class="fas fa-arrow-right ml-3"></i> </button>
-            </form>
-
-
-        </div>
-    </div>
     <div class="row mt-3">
         <div class="col-md-3">
 

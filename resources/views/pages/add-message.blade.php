@@ -249,6 +249,14 @@
                     {{ session('error') }}
                 </div>
             @endif
+                <div class="alert alert-info">
+                    Note: comma(,) is necessary after every action, key decison, links and mattering arising<br>
+                    The message format must be in the following way:<br>
+                    Actions:<br>
+                    1. SH: Bring in new CFO,<br>
+                    2. RE: Expand Board,<br>
+                    Same Conditions with other three
+                </div>
             <div class="row mt-2">
                 <div class="col text-center">
                     <h1>{{ $model }}</h1>
