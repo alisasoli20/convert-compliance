@@ -470,6 +470,7 @@
                         <th scope="col">Submitted for Review At</th>
                         <th scope="col">Submitted At</th>
                         <th scope="col">Submitted By</th>
+                        <th scope="col">View Logs</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -482,6 +483,7 @@
                         <td>{{ $approved->submit_for_review }}</td>
                         <td>{{ $approved->submitted_at }}</td>
                         <td>{{ $approved->user->name }}</td>
+                        <td><a href="{{ route('meeting.log',[$approved->meeting,$approved->id]) }}">View Logs</a></td>
                     </tr>
                     @endforeach
                     </tbody>

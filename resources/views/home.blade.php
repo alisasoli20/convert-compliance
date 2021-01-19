@@ -73,9 +73,11 @@
         <div class="col-md-4"></div>
     </div>
     <!--    sec3-->
-    <div class="row col-12">
-        <p class="sec3t1">Pakistan Society for the Rehabilitation of the Disabled is a non-profit, charitable organization dedicated to the service of orthopedically handicapped persons. PSRD was initially established by orthopaedic surgeons in 1957 as a small Physiotherapy Centre within Mayo Hospital. PSRD moved to its current premises in 1964. With the passage of time, PSRD has become a facility recognised by Rehabilitation International as an organisation with the maximum number of activities under one roof. It is supported by donations from philanthropic individuals and organizations.</p>
-        <p class="sec3t2">Mr. Parvez Masud, S.I. is the President of PSRD since 2012 and Mrs. Parveen Umar is the General Secretary.</p>
+    <div class="row ">
+        <div class="col-md-12 text-center">
+            <p>Placeholder</p>
+        </div>
+
     </div>
 
 
@@ -364,36 +366,9 @@
         </div>
 
     </div>
-    <div class="row mt-4">
-        <div class="col-md-3">
 
-        </div>
-        <div class="col-md-5 foot">
-            <div class="row">
-                <div class="col-md-4 col-4">
-
-                </div>
-                <div class="col-md-6 footericons">
-                    <i class="fab fa-facebook-f fa-2x"></i>
-                    <i class="fab fa-instagram fa-2x ml-5"></i>
-                    <i class="fab fa-twitter fa-2x ml-5"></i>
-
-                </div>
-
-                <div class="col-md-2 col-2">
-
-                </div>
-
-            </div>
-
-        </div>
-        <div class="col-md-4">
-
-        </div>
-
-    </div>
     <div class="row mt-3">
-        <h6 class="footertext">Copyright 2018 PSRD | All Rights Reserved |  Designed by CraftwithWP</h6>
+        <h6 class="footertext">Copyright 2020 | All Rights Reserved |  Designed by CovertCompliance</h6>
     </div>
 
 </div>

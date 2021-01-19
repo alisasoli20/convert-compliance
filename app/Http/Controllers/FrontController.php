@@ -20,10 +20,8 @@ use App\Models\news;
 use App\Models\ONBOARDCC;
 use App\Models\OPSCC;
 use App\Models\RISKACC;
-use App\Models\SubmittedMeeting;
 use App\Models\User;
 use Carbon\Carbon;
-use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -465,7 +463,7 @@ class FrontController extends Controller
                 $itdevcc->user_id = Auth::user()->id;
                 $itdevcc->submitted_at = Carbon::now();
                 if($itdevcc->save()){
-                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                   return redirect(route('meeting.log',[$itdevcc->meeting,$itdevcc->id]));
                 }
                 return redirect()->back()->with('success','Failed to submit your message');
             }
@@ -480,7 +478,7 @@ class FrontController extends Controller
                 $credriskcc->user_id = Auth::user()->id;
                 $credriskcc->submitted_at = Carbon::now();
                 if($credriskcc->save()){
-                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                   return redirect(route('meeting.log',[$credriskcc->meeting,$credriskcc->id]));
                 }
                 return redirect()->back()->with('success','Failed to submit your message');
             }
@@ -495,7 +493,7 @@ class FrontController extends Controller
                 $boardcc->user_id = Auth::user()->id;
                 $boardcc->submitted_at = Carbon::now();
                 if($boardcc->save()){
-                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                   return redirect(route('meeting.log',[$boardcc->meeting,$boardcc->id]));
                 }
                 return redirect()->back()->with('success','Failed to submit your message');
             }
@@ -510,22 +508,22 @@ class FrontController extends Controller
                 $opscc->user_id = Auth::user()->id;
                 $opscc->submitted_at = Carbon::now();
                 if($opscc->save()){
-                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                    return redirect(route('meeting.log',[$opscc->meeting,$opscc->id]));
                 }
                 return redirect()->back()->with('success','Failed to submit your message');
             }
             else if($model == "FCCC"){
-                $opscc= OPSCC::where('id',$id)->first();
-                $meeting = $opscc;
+                $fccc= FCCC::where('id',$id)->first();
+                $meeting = $fccc;
                 $pdf = Pdf::loadView('pdf', compact('meeting'));
                 $filname = time() . '.' . 'pdf';
                 $filepath = public_path('pdf/' . $filname);
                 $pdf->save($filepath);
-                $opscc->pdf = $filname;
-                $opscc->user_id = Auth::user()->id;
-                $opscc->submitted_at = Carbon::now();
-                if($opscc->save()){
-                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                $fccc->pdf = $filname;
+                $fccc->user_id = Auth::user()->id;
+                $fccc->submitted_at = Carbon::now();
+                if($fccc->save()){
+                    return redirect(route('meeting.log',[$fccc->meeting,$fccc->id]));
                 }
                 return redirect()->back()->with('success','Failed to submit your message');
             }
@@ -540,7 +538,7 @@ class FrontController extends Controller
                 $fraudcc->user_id = Auth::user()->id;
                 $fraudcc->submitted_at = Carbon::now();
                 if($fraudcc->save()){
-                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                    return redirect(route('meeting.log',[$fraudcc->meeting,$fraudcc->id]));
                 }
                 return redirect()->back()->with('success','Failed to submit your message');
             }
@@ -555,7 +553,7 @@ class FrontController extends Controller
                 $riskacc->user_id = Auth::user()->id;
                 $riskacc->submitted_at = Carbon::now();
                 if($riskacc->save()){
-                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                    return redirect(route('meeting.log',[$riskacc->meeting,$riskacc->id]));
                 }
                 return redirect()->back()->with('success','Failed to submit your message');
             }
@@ -570,7 +568,7 @@ class FrontController extends Controller
                 $deccc->user_id = Auth::user()->id;
                 $deccc->submitted_at = Carbon::now();
                 if($deccc->save()){
-                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                    return redirect(route('meeting.log',[$deccc->meeting,$deccc->id]));
                 }
                 return redirect()->back()->with('success','Failed to submit your message');
             }
@@ -585,7 +583,7 @@ class FrontController extends Controller
                 $monendcc->user_id = Auth::user()->id;
                 $monendcc->submitted_at = Carbon::now();
                 if($monendcc->save()){
-                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                    return redirect(route('meeting.log',[$monendcc->meeting,$monendcc->id]));;
                 }
                 return redirect()->back()->with('success','Failed to submit your message');
             }
@@ -600,7 +598,7 @@ class FrontController extends Controller
                 $onboardcc->user_id = Auth::user()->id;
                 $onboardcc->submitted_at = Carbon::now();
                 if($onboardcc->save()){
-                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                    return redirect(route('meeting.log',[$onboardcc->meeting,$onboardcc->id]));
                 }
                 return redirect()->back()->with('success','Failed to submit your message');
             }
@@ -615,7 +613,7 @@ class FrontController extends Controller
                 $marketcc->user_id = Auth::user()->id;
                 $marketcc->submitted_at = Carbon::now();
                 if($marketcc->save()){
-                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                   return redirect(route('meeting.log',[$marketcc->meeting,$marketcc->id]));
                 }
                 return redirect()->back()->with('success','Failed to submit your message');
             }
@@ -630,7 +628,7 @@ class FrontController extends Controller
                 $fincc->user_id = Auth::user()->id;
                 $fincc->submitted_at = Carbon::now();
                 if($fincc->save()){
-                    return redirect()->back()->with('success','Message has been successfully submitted.');
+                    return redirect(route('meeting.log',[$fincc->meeting,$fincc->id]));
                 }
                 return redirect()->back()->with('success','Failed to submit your message');
             }
@@ -847,6 +845,9 @@ class FrontController extends Controller
         if($model == "FINCC"){
             $data = FINCC::where('id',$id)->first();
         }
+        if($data->submitted_at != null){
+            abort(403);
+        }
         if($data != []) {
             $data->actions = $this->convert_to_array($data->actions);
             $data->key_decisions = $this->convert_to_array($data->key_decisions);
@@ -863,85 +864,97 @@ class FrontController extends Controller
             $title = "Information Technology";
             $data = $request->except("_token");
             $data['present'] = implode(',',$data['present']);
+            $data['link'] = implode(",",$data['link']);
             ITDEVCC::where('id',$id)->update($data);
-            return redirect(route('page',Str::slug($title)),compact('title'));
+            return redirect(route('page',Str::slug($title)))->with('success','Saved Changes successfully');
         }
         else if($model == "CREDRISKCC"){
             $title = "Information Technology";
             $data = $request->except("_token");
             $data['present'] = implode(',',$data['present']);
+            $data['link'] = implode(",",$data['link']);
             CREDRISKCC::where('id',$id)->update($data);
-            return redirect(route('page',Str::slug($title)),compact('title'));
+            return redirect(route('page',Str::slug($title)))->with('success','Saved Changes successfully');
         }
         else if($model == "BOARDCC"){
             $title = "Information Technology";
             $data = $request->except("_token");
             $data['present'] = implode(',',$data['present']);
+            $data['link'] = implode(",",$data['link']);
             BOARDCC::where('id',$id)->update($data);
-            return redirect(route('page',Str::slug($title)),compact('title'));
+            return redirect(route('page',Str::slug($title)))->with('success','Saved Changes successfully');
         }
         else if($model == "OPSCC"){
             $title = "Information Technology";
             $data = $request->except("_token");
             $data['present'] = implode(',',$data['present']);
+            $data['link'] = implode(",",$data['link']);
             OPSCC::where('id',$id)->update($data);
-            return redirect(route('page',Str::slug($title)),compact('title'));
+            return redirect(route('page',Str::slug($title)))->with('success','Saved Changes successfully');
         }
         else if($model == "FCCC"){
             $title = "Information Technology";
             $data = $request->except("_token");
             $data['present'] = implode(',',$data['present']);
+            $data['link'] = implode(",",$data['link']);
             FCCC::where('id',$id)->update($data);
-            return redirect(route('page',Str::slug($title)),compact('title'));
+            return redirect(route('page',Str::slug($title)))->with('success','Saved Changes successfully');
         }
         else if($model == "FRAUDCC"){
             $title = "Information Technology";
             $data = $request->except("_token");
             $data['present'] = implode(',',$data['present']);
+            $data['link'] = implode(",",$data['link']);
             FRAUDCC::where('id',$id)->update($data);
-            return redirect(route('page',Str::slug($title)),compact('title'));
+            return redirect(route('page',Str::slug($title)))->with('success','Saved Changes successfully');
         }
         else if($model == "RISKACC"){
             $title = "Information Technology";
             $data = $request->except("_token");
             $data['present'] = implode(',',$data['present']);
+            $data['link'] = implode(",",$data['link']);
             RISKACC::where('id',$id)->update($data);
-            return redirect(route('page',Str::slug($title)),compact('title'));
+            return redirect(route('page',Str::slug($title)))->with('success','Saved Changes successfully');
         }
         else if($model == "DECCC"){
             $title = "Decisions";
             $data = $request->except("_token");
             $data['present'] = implode(',',$data['present']);
+            $data['link'] = implode(",",$data['link']);
             DECCC::where('id',$id)->update($data);
-            return redirect(route('page',Str::slug($title)))->with('success','Changes Saved');
+            return redirect(route('page',Str::slug($title)))->with('success','Saved Changes successfully');
         }
         else if($model == "MONENDCC"){
             $title = "Information Technology";
             $data = $request->except("_token");
             $data['present'] = implode(',',$data['present']);
+            $data['link'] = implode(",",$data['link']);
             MONENDCC::where('id',$id)->update($data);
-            return redirect(route('page',Str::slug($title)),compact('title'));
+            return redirect(route('page',Str::slug($title)))->with('success','Saved Changes successfully');
         }
         else if($model == "ONBOARDCC"){
             $title = "Information Technology";
             $data = $request->except("_token");
             $data['present'] = implode(',',$data['present']);
+            $data['link'] = implode(",",$data['link']);
             ONBOARDCC::where('id',$id)->update($data);
-            return redirect(route('page',Str::slug($title)),compact('title'));
+            return redirect(route('page',Str::slug($title)))->with('success','Saved Changes successfully');
         }
         else if($model == "MARKETCC"){
             $title = "Information Technology";
             $data = $request->except("_token");
             $data['present'] = implode(',',$data['present']);
+            $data['link'] = implode(",",$data['link']);
             MARKETCC::where('id',$id)->update($data);
-            return redirect(route('page',Str::slug($title)),compact('title'));
+            return redirect(route('page',Str::slug($title)))->with('success','Saved Changes successfully');
         }
         else if($model == "FINCC"){
             $title = "Information Technology";
             $data = $request->except("_token");
             $data['present'] = implode(',',$data['present']);
+            $data['link'] = implode(",",$data['link']);
             FINCC::where('id',$id)->update($data);
-            return redirect(route('page',Str::slug($title)),compact('title'));
+            return redirect(route('page',Str::slug($title)))->with('success','Saved Changes successfully');
         }
     }
     public function downloadPDF($pdf){
