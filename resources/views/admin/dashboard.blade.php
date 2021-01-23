@@ -23,6 +23,14 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
+                {{--<div class="row mb-2">
+                    <div class="col-md-6">
+                        <h5>News Bot: @if(\App\Models\BotException::where('id',1)->first()->news_bot == 0)  <span class="badge badge-pill badge-success">Live</span> @else {{ \App\Models\BotException::where('id',1)->first()->news_bot }} @endif </h5>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <h5>Telegarm Message Bot: <span class="badge badge-pill badge-success">Live</span></h5>
+                    </div>
+                </div>--}}
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <!-- ./col -->

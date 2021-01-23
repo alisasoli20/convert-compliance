@@ -147,6 +147,7 @@
                             <td>Name</td>
                             <td>Status</td>
                             <td>Incident Lead</td>
+                            <td>Date of Incident</td>
                             <td>Changes</td>
                         </tr>
                         </thead>
@@ -157,6 +158,7 @@
                                 <td>{{ $open_incident->incident_team }}</td>
                                 <td>{{  ($open_incident->status == 0)?"Open":($open_incident->status == 1?"Closed":"Blocked")}}</td>
                                 <td>{{ $open_incident->incident_lead }}</td>
+                                <td>{{ $open_incident->date_of_incident }}</td>
                                 <td><a href="{{ route('edit.incident',$open_incident->id) }}"><i class="fas fa-edit"></i></a></td>
                             </tr>
                         @endforeach
@@ -173,6 +175,7 @@
                             <td>Name</td>
                             <td>Status</td>
                             <td>Incident Lead</td>
+                            <td>Date of Incident</td>
                             <td>Download PDF</td>
                         </tr>
                         </thead>
@@ -183,6 +186,7 @@
                                 <td>{{ $close_incident->incident_team }}</td>
                                 <td>{{   ($close_incident->status == 0)?"Open":($close_incident->status == 1?"Closed":"Blocked")}}</td>
                                 <td>{{ $close_incident->incident_lead }}</td>
+                                <td>{{ $open_incident->date_of_incident }}</td>
                                 <td><a href="{{ route('download.pdf',$close_incident->pdf) }}"><i class="fa fa-download"></i></a></td>
                             </tr>
                         @endforeach
