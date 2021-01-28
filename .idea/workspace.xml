@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="6f5286dd-3236-421e-9b4c-65ed687f3e8d" name="Default Changelist" comment="23/1/2021">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +165,12 @@
       <updated>1611395641100</updated>
       <workItem from="1611395643785" duration="663000" />
       <workItem from="1611397109028" duration="11000" />
-      <workItem from="1611402667055" duration="3623000" />
+      <workItem from="1611402667055" duration="4465000" />
+      <workItem from="1611646647906" duration="138000" />
+      <workItem from="1611756668666" duration="605000" />
+      <workItem from="1611770705873" duration="11000" />
+      <workItem from="1611770718860" duration="1944000" />
+      <workItem from="1611823112069" duration="79000" />
     </task>
     <task id="LOCAL-00001" summary="23/1/2021">
       <created>1611408928607</created>
@@ -174,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611408928607</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="23/1/2021">
+      <created>1611409963966</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1611409963966</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -190,6 +202,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="23/1/2021" />
