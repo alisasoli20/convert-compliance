@@ -186,7 +186,7 @@
                                 <td>{{ $close_incident->incident_team }}</td>
                                 <td>{{   ($close_incident->status == 0)?"Open":($close_incident->status == 1?"Closed":"Blocked")}}</td>
                                 <td>{{ $close_incident->incident_lead }}</td>
-                                <td>{{ $open_incident->date_of_incident }}</td>
+                                <td>{{ $close_incident->date_of_incident }}</td>
                                 <td><a href="{{ route('download.pdf',$close_incident->pdf) }}"><i class="fa fa-download"></i></a></td>
                             </tr>
                         @endforeach

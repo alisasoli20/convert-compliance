@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a9192986bcc4557ae73172c63432b834",
+    "content-hash": "2a13997d6e2dbb48b1fbff9735d62afb",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -113,6 +113,47 @@
                 }
             ],
             "time": "2020-08-18T23:57:15+00:00"
+        },
+        {
+            "name": "clegginabox/pdf-merger",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/clegginabox/pdf-merger.git",
+                "reference": "ca9367d0d4e21faa686414961d3e096973ecef14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/clegginabox/pdf-merger/zipball/ca9367d0d4e21faa686414961d3e096973ecef14",
+                "reference": "ca9367d0d4e21faa686414961d3e096973ecef14",
+                "shasum": ""
+            },
+            "require": {
+                "setasign/fpdf": "^1.8",
+                "setasign/fpdi": "^2.2"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/PDFMerger/PDFMerger.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paul Clegg",
+                    "email": "paul@clegginabox.co.uk"
+                }
+            ],
+            "description": "PDF File Merger for PHP5",
+            "support": {
+                "source": "https://github.com/clegginabox/pdf-merger/tree/master"
+            },
+            "time": "2021-01-16T08:44:14+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -7638,7 +7679,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "clegginabox/pdf-merger": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

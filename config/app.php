@@ -176,7 +176,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         niklasravnsborg\LaravelPdf\PdfServiceProvider::class,
-        GrofGraf\LaravelPDFMerger\Providers\PDFMergerServiceProvider::class
+        GrofGraf\LaravelPDFMerger\Providers\PDFMergerServiceProvider::class,
+
     ],
 
     /*

@@ -84,6 +84,7 @@ class PrivacyPolicyController extends Controller
     {
         $title = "Edit Policy";
         $policy = PolicyPrivacy::where('id',$id)->first();
+        $policy->distribution_list = explode(" ",$policy->distribution_list);
         $users = User::all();
         $departments = Department::all();
         return view('pages.edit-policy')->with(['policy' => $policy, 'users' => $users, 'title' => $title , 'departments' => $departments]);

@@ -18,7 +18,7 @@ Route::get('/home',["App\\Http\\Controllers\\FrontController","home"])->name("ho
 
 
 // FrontController Routes
-//Route::get('/test',['App\Http\Controllers\FrontController','test']);
+Route::get('/test',['App\Http\Controllers\FrontController','test']);
 //Route::get('/pdf-test',['App\Http\Controllers\FrontController','pdf']);
 
 

@@ -74,7 +74,7 @@
                                     @foreach($users as $user)
                                         <div class="col-md-12">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="{{ $user->email }}" name="distribution_list[]" id="defaultCheck1" {{ ($user->email == $process->distribution_list)?"checked":'' }}>
+                                                <input class="form-check-input" type="checkbox" value="{{ $user->email }}" name="distribution_list[]" id="defaultCheck1" {{ (in_array($user->email,$process->distribution_list))?"checked":'' }} >
                                                 <label class="form-check-label" for="defaultCheck1">
                                                     {{ $user->name }}
                                                 </label>

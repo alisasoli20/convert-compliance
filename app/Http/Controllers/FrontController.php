@@ -247,12 +247,11 @@ class FrontController extends Controller
         return $actions;
     }
     public function test(){
-        $user = User::where('id',1)->first();
-        $pdf = Pdf::loadView('pdf', compact('user'));
-        $filname = time().'.'.'pdf';
-        $filepath = public_path('pdf/'.$filname);
-        $pdf->save($filepath);
-        return $pdf->stream($filname);
+        exec("convert -density 300x300 -quality 100 "
+            . public_path('pdf/1610382283.pdf') . " "
+            . public_path('pdf/1610383730.pdf') . " "
+            . public_path('pdf/merged.pdf'));
+        return "Merged";
     }
     public function pdf(){
         $user = User::where('id',1)->first();

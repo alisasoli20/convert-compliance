@@ -85,6 +85,7 @@ class ProcessController extends Controller
         $title = "Processes";
         $departments = Department::all();
         $process = Process::where('id',$id)->first();
+        $process->distribution_list = explode(" ",$process->distribution_list);
         $users = User::all();
         return view('pages.edit-process')->with(['title' => $title, 'departments' => $departments, 'users' => $users, 'process' => $process]);
     }
